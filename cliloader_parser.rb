@@ -159,7 +159,7 @@ module CLILoaderParser
     end
 
     class EnqueueNDRangeKernel < Evt
-      @call_params = { queue: CommandQueue, kernel: Kernel, global_work_size: Vector, local_work_size: Vector }
+      @call_params = { queue: CommandQueue, kernel: Kernel, global_work_offset: Vector, global_work_size: Vector, local_work_size: Vector }
     end
 
     class Finish < Evt
@@ -167,51 +167,65 @@ module CLILoaderParser
     end
 
     module Releaser
-      def release(tag)
-        obj = infos[tag]
+
+      def release
+        obj = infos[self.class.call_params.keys.first]
         obj.reference_count -= 1
         obj.deletion_date = date if obj.reference_count == 0
       end
+
+      def self.included(klass)
+        klass.instance_variable_set(:@callback, lambda { |event| event.release })
+      end
+
+    end
+
+    module Retainer
+
+      def retain
+        obj = infos[self.class.call_params.keys.first]
+        obj.reference_count += 1
+      end
+
+      def self.included(klass)
+        klass.instance_variable_set(:@callback, lambda { |event| event.retain })
+      end
+
     end
 
     class ReleaseMemObject < Evt
       include Releaser
       @call_params = { mem: Mem }
-      @callback = lambda { |event|
-        event.release(:mem)
-      }
+    end
+
+    class RetainMemObject < Evt
+      include Retainer
+      @call_params = { mem: Mem }
     end
 
     class ReleaseProgram < Evt
       include Releaser
       @call_params = { program: Program }
-      @callback = lambda { |event|
-        event.release(:program)
-      }
+    end
+
+    class RetainProgram < Evt
+      include Retainer
+      @call_params = { program: Program }
     end
 
     class ReleaseKernel < Evt
       include Releaser
       @call_params = { kernel: Kernel }
-      @callback = lambda { |event|
-         event.release(:kernel)
-      }
     end
 
     class ReleaseCommandQueue < Evt
       include Releaser
       @call_params = { command_queue: CommandQueue }
-      @callback = lambda { |event|
-         event.release(:command_queue)
-      }
     end
 
     class ReleaseContext < Evt
       include Releaser
       @call_params = { context: Context }
-      @callback = lambda { |event|
-        event.release(:context)
-      }
     end
 
   end
