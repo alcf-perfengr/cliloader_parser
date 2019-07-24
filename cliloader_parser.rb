@@ -12,25 +12,6 @@ module CLILoaderParser
 
   module CL
 
-    module Parsable
-      attr_reader :creators
-      attr_reader :creators_params
-      attr_reader :creators_returns
-      attr_reader :releaser
-      attr_reader :releaser_tag
-      attr_reader :retainer
-      attr_reader :retainer_tag
-
-      def tag
-        self.cl_name.downcase
-      end
-
-      def cl_name
-        self.name.split("::").last
-      end
-
-    end
-
     class Obj
       attr_reader :clid
       attr_accessor :reference_count
@@ -45,48 +26,192 @@ module CLILoaderParser
         @infos = infos
       end
 
-      def self.inherited(subclass)
-        subclass.extend(Parsable)
-        subclass.instance_variable_set(:@creators, [ "clCreate#{subclass.cl_name}" ])
-        subclass.instance_variable_set(:@creators_params, [{}])
-        subclass.instance_variable_set(:@creators_returns, [{}])
-        subclass.instance_variable_set(:@releaser, "clRelease#{subclass.cl_name}")
-        subclass.instance_variable_set(:@releaser_tag, subclass.tag)
-        subclass.instance_variable_set(:@retainer, "clRetain#{subclass.cl_name}")
-        subclass.instance_variable_set(:@retainer_tag, subclass.tag)
-        CLILoaderParser::Parser.register(subclass)
-      end
     end
 
     class Flags
     end
 
+    class Handle
+    end
+
+    class Pointer
+    end
+
+    class Vector
+    end
+
+    class NameList
+    end
+
+    class Bool
+    end
+
     class Context < Obj
-      @creators_params = [ { num_devices: Integer } ]
     end
 
     class CommandQueue < Obj
-      @creators_params = [ { context: Context, properties: Flags } ]
-      @releaser_tag = "command_queue"
-      @retainer_tag = "command_queue"
     end
 
     class Program < Obj
-      @creators = [ "clCreateProgramWithSource" ]
-      @creators_params = [ { context: Context, count: Integer } ]
-      @creators_returns = [ { :"program number" => Integer } ]
     end
 
     class Kernel < Obj
-      @creators_params = [ { program: Program, kernel_name: String } ]
     end
 
-    class Buffer < Obj
-      @creators_params = [ { context: Context, flags: Flags, size: Integer } ]
-      @releaser = "clReleaseMemObject"
-      @releaser_tag = "mem"
-      @retainer = "clRetainMemObject"
-      @retainer_tag = "mem"
+    class Mem < Obj
+    end
+
+    class Buffer < Mem
+    end
+
+    module ParsableEvent
+      attr_reader :call_params
+      attr_reader :returns
+      attr_reader :returned
+      attr_reader :callback
+
+      def cl_name
+        "cl" << self.name.split("::").last
+      end
+    end
+
+    class Evt
+      attr_reader :date
+      attr_reader :return_code
+      attr_reader :returned
+      attr_reader :infos
+      def initialize(date, return_code, returned, **infos)
+        @date = date
+        @return_code = return_code
+        @returned = returned
+        @infos = infos
+        if returned && return_code == "CL_SUCCESS"
+          o = self.class.returned::new(returned, date, **infos)
+          CLILoaderParser::Parser::OBJECTS[returned] = o
+          @returned = o
+        end
+        if self.class.callback
+          self.class.callback.call(self)
+        end
+      end
+
+      def self.inherited(subclass)
+        subclass.extend(ParsableEvent)
+        subclass.instance_variable_set(:@call_params, {})
+        subclass.instance_variable_set(:@returns, {})
+        subclass.instance_variable_set(:@returned, false)
+        subclass.instance_variable_set(:@callback, nil)
+        CLILoaderParser::Parser.register(subclass)
+      end
+    end
+
+    class GetPlatformIDs < Evt
+    end
+
+    class GetDeviceIDs < Evt
+      @call_params = { platform: NameList, device_type: Flags }
+    end
+
+    class GetDeviceInfo < Evt
+      @call_params = { device: NameList, param_name: Flags }
+    end
+
+    class CreateContext < Evt
+      @call_params = { properties: NameList, num_devices: Integer, devices: NameList }
+      @returned = Context
+    end
+
+    class CreateCommandQueue < Evt
+      @call_params = { context: Context, device: NameList, properties: Flags }
+      @returned = CommandQueue
+    end
+
+    class CreateProgramWithSource < Evt
+      @call_params = { context: Context, count: Integer }
+      @returns = { :"program number" => String }
+      @returned = Program
+    end
+
+    class BuildProgram < Evt
+      @call_params = { program: Program, pfn_notify: Pointer }
+    end
+
+    class CreateKernel < Evt
+      @call_params = { program: Program, kernel_name: String }
+      @returned = Kernel
+    end
+
+    class CreateBuffer < Evt
+      @call_params = { context: Context, flags: Flags, size: Integer, host_ptr: Pointer }
+      @returned = Buffer
+    end
+
+    class EnqueueWriteBuffer < Evt
+      @call_params = { queue: CommandQueue, buffer: Buffer, blocking: Bool, offset: Integer, cb: Integer, ptr: Pointer }
+    end
+
+    class EnqueueReadBuffer < Evt
+      @call_params = { queue: CommandQueue, buffer: Buffer, blocking: Bool, offset: Integer, cb: Integer, ptr: Pointer }
+    end
+
+    class SetKernelArg < Evt
+      @call_params = { kernel: Kernel, index: Integer, size: Integer, value: Handle }
+    end
+
+    class EnqueueNDRangeKernel < Evt
+      @call_params = { queue: CommandQueue, kernel: Kernel, global_work_size: Vector, local_work_size: Vector }
+    end
+
+    class Finish < Evt
+      @call_params = { queue: CommandQueue }
+    end
+
+    module Releaser
+      def release(tag)
+        obj = infos[tag]
+        obj.reference_count -= 1
+        obj.deletion_date = date if obj.reference_count == 0
+      end
+    end
+
+    class ReleaseMemObject < Evt
+      include Releaser
+      @call_params = { mem: Mem }
+      @callback = lambda { |event|
+        event.release(:mem)
+      }
+    end
+
+    class ReleaseProgram < Evt
+      include Releaser
+      @call_params = { program: Program }
+      @callback = lambda { |event|
+        event.release(:program)
+      }
+    end
+
+    class ReleaseKernel < Evt
+      include Releaser
+      @call_params = { kernel: Kernel }
+      @callback = lambda { |event|
+         event.release(:kernel)
+      }
+    end
+
+    class ReleaseCommandQueue < Evt
+      include Releaser
+      @call_params = { command_queue: CommandQueue }
+      @callback = lambda { |event|
+         event.release(:command_queue)
+      }
+    end
+
+    class ReleaseContext < Evt
+      include Releaser
+      @call_params = { context: Context }
+      @callback = lambda { |event|
+        event.release(:context)
+      }
     end
 
   end
@@ -94,80 +219,98 @@ module CLILoaderParser
   module Parser
 
     OBJECTS = {}
+    EVENTS = []
 
     def self.parser_prog
       return @parser_prog
     end
 
     def self.generate
+
+      param_parser = lambda { |stream, param, kind|
+        if kind < CLILoaderParser::CL::Obj || kind == CLILoaderParser::CL::Handle
+          @parser_prog << <<EOF
+        #{stream} =~ /#{param} = (0x\\h+)/
+        if $&
+          handle = $1
+          args[:"#{param}"] = handle
+          obj = OBJECTS[handle]
+          args[:"#{param}"] = OBJECTS[$1] if obj
+        end
+EOF
+        elsif kind == Integer
+          @parser_prog << <<EOF
+        #{stream} =~ /#{param} = (\\d+)/
+        args[:"#{param}"] = $1.to_i if $&
+EOF
+        elsif kind == String
+          @parser_prog << <<EOF
+        #{stream} =~ /#{param} = (\\w+)/
+        args[:"#{param}"] = $1 if $&
+EOF
+        elsif kind == CLILoaderParser::CL::Bool
+          @parser_prog << <<EOF
+          #{stream} =~ /#{param}/
+          args[:"#{param}"] = true if $&
+EOF
+        elsif kind == CLILoaderParser::CL::Flags
+          @parser_prog << <<EOF
+        #{stream} =~ /#{param} = \\w* \\((\\h+)\\)/
+        args[:"#{param}"] = $1.to_i(16) if $&
+EOF
+        elsif kind == CLILoaderParser::CL::Vector
+          @parser_prog << <<EOF
+        #{stream} =~ /#{param} = <(.*?)>/
+        args[:"#{param}"] = $1.split(" x ").collect(&:strip).collect(&:to_i) if $&
+EOF
+        elsif kind == CLILoaderParser::CL::NameList
+          @parser_prog << <<EOF
+        #{stream} =~ /#{param} = (\\[.*?\\])/
+        args[:"#{param}"] = $1 if $&
+EOF
+        elsif kind == CLILoaderParser::CL::Pointer
+          @parser_prog << <<EOF
+        #{stream} =~ /#{param} = \\(nil\\)/
+        if $&
+          args[:"#{param}"] = nil
+        else
+          #{stream} =~ /#{param} = (0x\\h+)/
+          args[:"#{param}"] = $1 if $&
+        end
+EOF
+        end
+      }
       @parser_prog = <<EOF
     def self.parse_block(call_line, return_line)
       case call_line
 EOF
-      CLASSES.each { |klass|
-        klass.creators.each_with_index { |func, index|
-          params = klass.creators_params[index]
-          returns = klass.creators_returns[index]
-          @parser_prog << <<EOF
-      when /#{func}/
-        return_line =~ /returned (0x\\h+)/
-        clid = $1
+      CLASSES.each { |event|
+        call_params = event.call_params
+        returns = event.returns
+        @parser_prog << <<EOF
+      when /#{event.cl_name}/
         call_line =~ /EnqueueCounter: (\\d+)/
-        creation_date = $1
+        date = $1
+        return_line =~ /-> (\\w+)/
+        return_code = $1
+        returned = nil
         args = {}
 EOF
-          param_parser = lambda { |stream, param, kind|
-            if kind < CLILoaderParser::CL::Obj
-              @parser_prog << <<EOF
-        #{stream} =~ /#{param} = (0x\\h+)/
-        args[:"#{param}"] = OBJECTS[$1] if $&
-EOF
-            elsif kind == Integer
-              @parser_prog << <<EOF
-        #{stream} =~ /#{param} = (\\d+)/
-        args[:"#{param}"] = $1.to_i if $&
-EOF
-            elsif kind == String
-              @parser_prog << <<EOF
-        #{stream} =~ /#{param} = (\\w+)/
-        args[:"#{param}"] = $1 if $&
-EOF
-            elsif kind == CLILoaderParser::CL::Flags
-              @parser_prog << <<EOF
-        #{stream} =~ /#{param} = \\w* \\((\\d+)\\)/
-        args[:"#{param}"] = $1.to_i if $&
-EOF
-            end
-          }
-          params.each { |param, kind| param_parser.call("call_line", param, kind) }
-          returns.each { |param, kind| param_parser.call("return_line", param, kind) }
+        if event.returned
           @parser_prog << <<EOF
-          OBJECTS[clid] = #{klass.name}::new(clid, creation_date, **args)
+        return_line =~ /returned (0x\\h+)/
+        returned = $1 if $&
+EOF
+        end
+        call_params.each { |param, kind| param_parser.call("call_line", param, kind) }
+        returns.each { |param, kind| param_parser.call("return_line", param, kind) }
+        @parser_prog << <<EOF
+        EVENTS.push #{event.name}::new(date, return_code, returned, **args)
 EOF
         }
-      
-        func = klass.releaser
-        tag = klass.releaser_tag
-        @parser_prog << <<EOF
-      when /#{func}/
-        call_line =~ /#{tag} = (0x\\h+)/
-        clid = $1
-        OBJECTS[clid].reference_count -= 1
-        if OBJECTS[clid].reference_count == 0
-          call_line =~ /EnqueueCounter: (\\d+)/
-          OBJECTS[clid].deletion_date = $1
-        end
-EOF
-        func = klass.retainer
-        tag = klass.releaser_tag
-        @parser_prog << <<EOF
-      when /#{func}/
-        call_line =~ /#{tag} = (0x\\h+)/
-        clid = $1
-        OBJECTS[clid].reference_count += 1
-EOF
-      }
       @parser_prog << <<EOF
+      else
+        raise "Unrecognized OpenCL event: '\#{call_line}'!"
       end
     end
 EOF
