@@ -7,6 +7,7 @@ module CLILoader
       attr_accessor :reference_count
       attr_reader :creation_date
       attr_accessor :deletion_date
+      attr_reader :infos
 
       def initialize(clid, creation_date, **infos)
         @clid = clid

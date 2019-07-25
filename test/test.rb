@@ -4,3 +4,4 @@ require 'cliloader'
 
 require_relative 'parser'
 require_relative 'files'
+require_relative 'extractor'

@@ -25,7 +25,7 @@ module CLILoader
           evt = create_program_with_source_evts.find { |e|
             e.infos[:"program number"] == program_number
           }
-          @program_sources[file_name] = evt if evt
+          @program_sources[File.join(dir.path,file_name)] = evt if evt
         end
       }
     end
@@ -41,7 +41,7 @@ module CLILoader
               evt = enqueue_kernel_evts.find { |e|
                 e.date == enqueue_number
               }
-              store[file_name] = [ evt, arg_number ]
+              store[File.join(dir.path,dir_name,file_name)] = [ evt, arg_number ]
             end
           }
         }
