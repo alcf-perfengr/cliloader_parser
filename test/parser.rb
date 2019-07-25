@@ -1,4 +1,5 @@
 class TestParser < Minitest::Test
+
   def test_3D
     File::open("./3D/clintercept_log.txt", "r") { |f|
       objects, events = CLILoader::Parser.parse(f)
@@ -11,4 +12,5 @@ class TestParser < Minitest::Test
       }
     }
   end
+
 end

@@ -3,3 +3,4 @@ require 'minitest/autorun'
 require 'cliloader'
 
 require_relative 'parser'
+require_relative 'files'
