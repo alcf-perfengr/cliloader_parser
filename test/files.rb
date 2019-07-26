@@ -11,6 +11,7 @@ class TestFiles < Minitest::Test
       assert_equal( 1, CLILoader::Files.program_sources.size )
       assert_equal( 3, CLILoader::Files.buffer_inputs.size )
       assert_equal( 3, CLILoader::Files.buffer_outputs.size )
+      assert_equal( 1400, CLILoader::Files.set_arg_values.size )
     }
   end
 
