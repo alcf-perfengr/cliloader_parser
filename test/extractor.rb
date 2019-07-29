@@ -40,6 +40,8 @@ class TestExtractor < Minitest::Test
 3D_output/0000/hotspotOpt1/0050/11.in
 3D_output/0000/hotspotOpt1/0050/12.in
 3D_output/0000/hotspotOpt1/0050/13.in
+3D_output/0000/hotspotOpt1/0050/global_work_size
+3D_output/0000/hotspotOpt1/0050/local_work_size
 3D_output/0000/source.cl
 EOF
   end

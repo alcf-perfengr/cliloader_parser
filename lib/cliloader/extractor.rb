@@ -5,6 +5,20 @@ module CLILoader
 
   module Extractor
 
+    def self.dump_kernel_work_data_info(dirpath, enqueue, info)
+      if enqueue.infos[info]
+        File::open(File::join(dirpath, info.to_s), "wb") { |f|
+          f.write(enqueue.infos[info].pack("Q*"))
+        }
+      end
+    end
+
+    def self.save_kernel_work_data(dirpath, enqueue)
+      [:global_work_offset, :global_work_size, :local_work_size].each { |info|
+        dump_kernel_work_data_info(dirpath, enqueue, info)
+      }
+    end
+
     def self.save_kernel_data(dirpath, kernels, enqueues, set_args, buffer_inputs, buffer_outputs, arg_values)
       kernels.each { |k|
         kernel_dirpath = File.join(dirpath, k.infos[:kernel_name])
@@ -13,6 +27,7 @@ module CLILoader
         kernel_enqueues.each { |enqueue|
           enqueue_dirpath = File.join(kernel_dirpath, "%04d" % enqueue.date)
           Dir::mkdir(enqueue_dirpath) unless Dir.exist?(enqueue_dirpath)
+          save_kernel_work_data(enqueue_dirpath, enqueue)
           arg_set = Set::new
           buffer_inputs.each do |file_name, (evt, arg_number)|
             if evt == enqueue
