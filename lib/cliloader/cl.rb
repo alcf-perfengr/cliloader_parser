@@ -140,6 +140,7 @@ module CLILoader
     end
 
     Evt::create :GetPlatformIDs
+    Evt::create :GetPlatformInfo, call_params: { platform: NameList, param_name: Flags }
     Evt::create :GetDeviceIDs, call_params: { platform: NameList, device_type: Flags }
     Evt::create :GetDeviceInfo, call_params: { device: NameList, param_name: Flags }
     Evt::create :CreateContext, call_params: { properties: NameList, num_devices: Integer, devices: NameList }, returned: Context

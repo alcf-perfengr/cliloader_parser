@@ -46,4 +46,59 @@ class TestExtractor < Minitest::Test
 EOF
   end
 
+  def test_bfs
+    objects = nil
+    events = nil
+    File::open("./bfs/clintercept_log.txt", "r") { |f|
+      objects, events = CLILoader::Parser.parse(f)
+    }
+    program_sources = nil
+    buffer_inputs = nil
+    buffer_outputs = nil
+    set_arg_values = nil
+    Dir::open("./bfs/") { |d|
+      program_sources, buffer_inputs, buffer_outputs, set_arg_values = CLILoader::Files::match_files(d, events)
+    }
+    FileUtils.remove_entry("./bfs_output") if Dir::exist?("./bfs_output")
+    Dir::mkdir("./bfs_output")
+    Dir::open("./bfs_output") { |d|
+      CLILoader::Extractor.extract_kernels(d, objects, events, program_sources, buffer_inputs, buffer_outputs, set_arg_values)
+    }
+    assert_equal( <<EOF, `find bfs_output | sort`)
+bfs_output
+bfs_output/0000
+bfs_output/0000/BFS_1
+bfs_output/0000/BFS_1/0044
+bfs_output/0000/BFS_1/0044/00.buffer.in
+bfs_output/0000/BFS_1/0044/00.buffer.out
+bfs_output/0000/BFS_1/0044/01.buffer.in
+bfs_output/0000/BFS_1/0044/01.buffer.out
+bfs_output/0000/BFS_1/0044/02.buffer.in
+bfs_output/0000/BFS_1/0044/02.buffer.out
+bfs_output/0000/BFS_1/0044/03.buffer.in
+bfs_output/0000/BFS_1/0044/03.buffer.out
+bfs_output/0000/BFS_1/0044/04.buffer.in
+bfs_output/0000/BFS_1/0044/04.buffer.out
+bfs_output/0000/BFS_1/0044/05.buffer.in
+bfs_output/0000/BFS_1/0044/05.buffer.out
+bfs_output/0000/BFS_1/0044/06.in
+bfs_output/0000/BFS_1/0044/global_work_size
+bfs_output/0000/BFS_1/0044/local_work_size
+bfs_output/0000/BFS_2
+bfs_output/0000/BFS_2/0045
+bfs_output/0000/BFS_2/0045/00.buffer.in
+bfs_output/0000/BFS_2/0045/00.buffer.out
+bfs_output/0000/BFS_2/0045/01.buffer.in
+bfs_output/0000/BFS_2/0045/01.buffer.out
+bfs_output/0000/BFS_2/0045/02.buffer.in
+bfs_output/0000/BFS_2/0045/02.buffer.out
+bfs_output/0000/BFS_2/0045/03.buffer.in
+bfs_output/0000/BFS_2/0045/03.buffer.out
+bfs_output/0000/BFS_2/0045/04.in
+bfs_output/0000/BFS_2/0045/global_work_size
+bfs_output/0000/BFS_2/0045/local_work_size
+bfs_output/0000/source.cl
+EOF
+  end
+
 end

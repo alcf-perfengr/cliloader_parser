@@ -1,0 +1,494 @@
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+CLIntercept (64-bit) is loading...
+CLintercept file location: /soft/restricted/intel_dga/tools/opencl-intercept-layer/build/cliloader/../intercept/libOpenCL.so
+CLIntercept URL: https://github.com/intel/opencl-intercept-layer
+CLIntercept git description: v2.2.1-140-gb3656b1
+CLIntercept git refspec: refs/heads/master
+CLInterecpt git hash: b3656b1706c38e26060e20ebf2eaa5958965e37a
+CLIntercept optional features:
+    cliloader(supported)
+    cliprof(supported)
+    kernel overrides(supported)
+    ITT tracing(NOT supported)
+    MDAPI(supported)
+CLIntercept environment variable prefix: CLI_
+CLIntercept config file: clintercept.conf
+Read DLL name from user parameters: /soft/restricted/intel_dga/sdk/2019.6.30.011/compiler/latest/lib/libOpenCL.so.1
+Trying to load dispatch from: /soft/restricted/intel_dga/sdk/2019.6.30.011/compiler/latest/lib/libOpenCL.so.1
+... success!
+LogToFile is set to a non-default value!
+CallLogging is set to a non-default value!
+CallLoggingEnqueueCounter is set to a non-default value!
+ReportToStderr is set to a non-default value!
+ReportToFile is set to a non-default value!
+DumpProgramSource is set to a non-default value!
+DumpArgumentsOnSet is set to a non-default value!
+DumpBuffersBeforeEnqueue is set to a non-default value!
+DumpBuffersAfterEnqueue is set to a non-default value!
+DumpBuffersMinEnqueue is set to a non-default value!
+DumpBuffersMaxEnqueue is set to a non-default value!
+Timer Started!
+... loading complete.
+>>>> clGetPlatformIDs; EnqueueCounter: 1
+<<<< clGetPlatformIDs -> CL_SUCCESS
+>>>> clGetPlatformIDs; EnqueueCounter: 1
+<<<< clGetPlatformIDs -> CL_SUCCESS
+>>>> clGetPlatformInfo: platform = [ Intel(R) OpenCL HD Graphics ], param_name = CL_PLATFORM_VENDOR (00000903); EnqueueCounter: 1
+<<<< clGetPlatformInfo -> CL_SUCCESS
+>>>> clGetPlatformInfo: platform = [ Intel(R) OpenCL ], param_name = CL_PLATFORM_VENDOR (00000903); EnqueueCounter: 1
+<<<< clGetPlatformInfo -> CL_SUCCESS
+>>>> clCreateContextFromType: properties = [ CL_CONTEXT_PLATFORM = Intel(R) OpenCL HD Graphics ], device_type = CL_DEVICE_TYPE_GPU (4); EnqueueCounter: 1
+<<<< clCreateContextFromType: returned 0x1c35140 -> CL_SUCCESS
+>>>> clGetDeviceIDs: platform = [ Intel(R) OpenCL HD Graphics ], device_type = CL_DEVICE_TYPE_GPU (4); EnqueueCounter: 1
+<<<< clGetDeviceIDs -> CL_SUCCESS
+>>>> clGetDeviceIDs: platform = [ Intel(R) OpenCL HD Graphics ], device_type = CL_DEVICE_TYPE_GPU (4); EnqueueCounter: 1
+<<<< clGetDeviceIDs -> CL_SUCCESS
+>>>> clCreateCommandQueue: context = 0x1c35140, device = [ Intel(R) Gen9 HD Graphics NEO (CL_DEVICE_TYPE_GPU) ], properties =  (0); EnqueueCounter: 1
+<<<< clCreateCommandQueue: returned 0x1c35530 -> CL_SUCCESS
+>>>> clCreateProgramWithSource: context = 0x1c35140, count = 1; EnqueueCounter: 1
+<<<< clCreateProgramWithSource: returned 0x1c35c40, program number = 0000 -> CL_SUCCESS
+Dumping program to file (inject): /home/videau/CLIntercept_Dump/bfs/CLI_0000_8F190950_source.cl
+>>>> clBuildProgram: program = 0x1c35c40, pfn_notify = (nil); EnqueueCounter: 1
+<<<< clBuildProgram -> CL_SUCCESS
+>>>> clCreateKernel: program = 0x1c35c40, kernel_name = BFS_1; EnqueueCounter: 1
+<<<< clCreateKernel: returned 0x1ebf880 -> CL_SUCCESS
+>>>> clCreateKernel: program = 0x1c35c40, kernel_name = BFS_2; EnqueueCounter: 1
+<<<< clCreateKernel: returned 0x21f1c80 -> CL_SUCCESS
+>>>> clCreateBuffer: context = 0x1c35140, flags = CL_MEM_WRITE_ONLY | CL_MEM_COPY_HOST_PTR (22), size = 8000000, host_ptr = 0x7f6373e75010; EnqueueCounter: 1
+<<<< clCreateBuffer: returned 0x1c94450 -> CL_SUCCESS
+>>>> clCreateBuffer: context = 0x1c35140, flags = CL_MEM_WRITE_ONLY | CL_MEM_COPY_HOST_PTR (22), size = 23999880, host_ptr = 0x7f63725a7010; EnqueueCounter: 1
+<<<< clCreateBuffer: returned 0x1c8f6f0 -> CL_SUCCESS
+>>>> clCreateBuffer: context = 0x1c35140, flags = CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR (21), size = 1000000, host_ptr = 0x7f6375eae010; EnqueueCounter: 1
+<<<< clCreateBuffer: returned 0x1c75280 -> CL_SUCCESS
+>>>> clCreateBuffer: context = 0x1c35140, flags = CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR (21), size = 1000000, host_ptr = 0x7f6373d80010; EnqueueCounter: 1
+<<<< clCreateBuffer: returned 0x28dfc60 -> CL_SUCCESS
+>>>> clCreateBuffer: context = 0x1c35140, flags = CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR (21), size = 1000000, host_ptr = 0x7f6373c8b010; EnqueueCounter: 1
+<<<< clCreateBuffer: returned 0x28cb2a0 -> CL_SUCCESS
+>>>> clCreateBuffer: context = 0x1c35140, flags = CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR (21), size = 4000000, host_ptr = 0x7f63721d6010; EnqueueCounter: 1
+<<<< clCreateBuffer: returned 0x1c77030 -> CL_SUCCESS
+>>>> clCreateBuffer: context = 0x1c35140, flags = CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR (21), size = 1, host_ptr = 0x7ffff2121a6f; EnqueueCounter: 1
+<<<< clCreateBuffer: returned 0x1cb7950 -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1c94450, blocking, offset = 0, cb = 8000000, ptr = 0x7f6373e75010; EnqueueCounter: 1
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1c8f6f0, blocking, offset = 0, cb = 23999880, ptr = 0x7f63725a7010; EnqueueCounter: 2
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1c75280, blocking, offset = 0, cb = 1000000, ptr = 0x7f6375eae010; EnqueueCounter: 3
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x28dfc60, blocking, offset = 0, cb = 1000000, ptr = 0x7f6373d80010; EnqueueCounter: 4
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x28cb2a0, blocking, offset = 0, cb = 1000000, ptr = 0x7f6373c8b010; EnqueueCounter: 5
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1c77030, blocking, offset = 0, cb = 4000000, ptr = 0x7f63721d6010; EnqueueCounter: 6
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 7
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 0, size = 8, value = 0x1c94450; EnqueueCounter: 8
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 1, size = 8, value = 0x1c8f6f0; EnqueueCounter: 8
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 2, size = 8, value = 0x1c75280; EnqueueCounter: 8
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 3, size = 8, value = 0x28dfc60; EnqueueCounter: 8
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 4, size = 8, value = 0x28cb2a0; EnqueueCounter: 8
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 5, size = 8, value = 0x1c77030; EnqueueCounter: 8
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 6, size = 4, value = 0xf4240; EnqueueCounter: 8
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_1 ): queue = 0x1c35530, kernel = 0x1ebf880, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 8
+<<<< clEnqueueNDRangeKernel created event = 0x1cb7720 -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 0, size = 8, value = 0x1c75280; EnqueueCounter: 9
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 1, size = 8, value = 0x28dfc60; EnqueueCounter: 9
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 2, size = 8, value = 0x28cb2a0; EnqueueCounter: 9
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 3, size = 8, value = 0x1cb7950; EnqueueCounter: 9
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 4, size = 4, value = 0xf4240; EnqueueCounter: 9
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_2 ): queue = 0x1c35530, kernel = 0x21f1c80, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 9
+<<<< clEnqueueNDRangeKernel created event = 0x201a5e0 -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 10
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 11
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 0, size = 8, value = 0x1c94450; EnqueueCounter: 12
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 1, size = 8, value = 0x1c8f6f0; EnqueueCounter: 12
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 2, size = 8, value = 0x1c75280; EnqueueCounter: 12
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 3, size = 8, value = 0x28dfc60; EnqueueCounter: 12
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 4, size = 8, value = 0x28cb2a0; EnqueueCounter: 12
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 5, size = 8, value = 0x1c77030; EnqueueCounter: 12
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 6, size = 4, value = 0xf4240; EnqueueCounter: 12
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_1 ): queue = 0x1c35530, kernel = 0x1ebf880, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 12
+<<<< clEnqueueNDRangeKernel created event = 0x1d63200 -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 0, size = 8, value = 0x1c75280; EnqueueCounter: 13
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 1, size = 8, value = 0x28dfc60; EnqueueCounter: 13
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 2, size = 8, value = 0x28cb2a0; EnqueueCounter: 13
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 3, size = 8, value = 0x1cb7950; EnqueueCounter: 13
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 4, size = 4, value = 0xf4240; EnqueueCounter: 13
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_2 ): queue = 0x1c35530, kernel = 0x21f1c80, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 13
+<<<< clEnqueueNDRangeKernel created event = 0x21f3120 -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 14
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 15
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 0, size = 8, value = 0x1c94450; EnqueueCounter: 16
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 1, size = 8, value = 0x1c8f6f0; EnqueueCounter: 16
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 2, size = 8, value = 0x1c75280; EnqueueCounter: 16
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 3, size = 8, value = 0x28dfc60; EnqueueCounter: 16
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 4, size = 8, value = 0x28cb2a0; EnqueueCounter: 16
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 5, size = 8, value = 0x1c77030; EnqueueCounter: 16
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 6, size = 4, value = 0xf4240; EnqueueCounter: 16
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_1 ): queue = 0x1c35530, kernel = 0x1ebf880, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 16
+<<<< clEnqueueNDRangeKernel created event = 0x28c1710 -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 0, size = 8, value = 0x1c75280; EnqueueCounter: 17
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 1, size = 8, value = 0x28dfc60; EnqueueCounter: 17
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 2, size = 8, value = 0x28cb2a0; EnqueueCounter: 17
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 3, size = 8, value = 0x1cb7950; EnqueueCounter: 17
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 4, size = 4, value = 0xf4240; EnqueueCounter: 17
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_2 ): queue = 0x1c35530, kernel = 0x21f1c80, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 17
+<<<< clEnqueueNDRangeKernel created event = 0x1c7cc10 -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 18
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 19
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 0, size = 8, value = 0x1c94450; EnqueueCounter: 20
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 1, size = 8, value = 0x1c8f6f0; EnqueueCounter: 20
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 2, size = 8, value = 0x1c75280; EnqueueCounter: 20
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 3, size = 8, value = 0x28dfc60; EnqueueCounter: 20
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 4, size = 8, value = 0x28cb2a0; EnqueueCounter: 20
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 5, size = 8, value = 0x1c77030; EnqueueCounter: 20
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 6, size = 4, value = 0xf4240; EnqueueCounter: 20
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_1 ): queue = 0x1c35530, kernel = 0x1ebf880, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 20
+<<<< clEnqueueNDRangeKernel created event = 0x28c4af0 -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 0, size = 8, value = 0x1c75280; EnqueueCounter: 21
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 1, size = 8, value = 0x28dfc60; EnqueueCounter: 21
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 2, size = 8, value = 0x28cb2a0; EnqueueCounter: 21
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 3, size = 8, value = 0x1cb7950; EnqueueCounter: 21
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 4, size = 4, value = 0xf4240; EnqueueCounter: 21
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_2 ): queue = 0x1c35530, kernel = 0x21f1c80, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 21
+<<<< clEnqueueNDRangeKernel created event = 0x1c94ad0 -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 22
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 23
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 0, size = 8, value = 0x1c94450; EnqueueCounter: 24
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 1, size = 8, value = 0x1c8f6f0; EnqueueCounter: 24
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 2, size = 8, value = 0x1c75280; EnqueueCounter: 24
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 3, size = 8, value = 0x28dfc60; EnqueueCounter: 24
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 4, size = 8, value = 0x28cb2a0; EnqueueCounter: 24
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 5, size = 8, value = 0x1c77030; EnqueueCounter: 24
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 6, size = 4, value = 0xf4240; EnqueueCounter: 24
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_1 ): queue = 0x1c35530, kernel = 0x1ebf880, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 24
+<<<< clEnqueueNDRangeKernel created event = 0x1c9a660 -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 0, size = 8, value = 0x1c75280; EnqueueCounter: 25
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 1, size = 8, value = 0x28dfc60; EnqueueCounter: 25
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 2, size = 8, value = 0x28cb2a0; EnqueueCounter: 25
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 3, size = 8, value = 0x1cb7950; EnqueueCounter: 25
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 4, size = 4, value = 0xf4240; EnqueueCounter: 25
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_2 ): queue = 0x1c35530, kernel = 0x21f1c80, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 25
+<<<< clEnqueueNDRangeKernel created event = 0x20190f0 -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 26
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 27
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 0, size = 8, value = 0x1c94450; EnqueueCounter: 28
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 1, size = 8, value = 0x1c8f6f0; EnqueueCounter: 28
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 2, size = 8, value = 0x1c75280; EnqueueCounter: 28
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 3, size = 8, value = 0x28dfc60; EnqueueCounter: 28
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 4, size = 8, value = 0x28cb2a0; EnqueueCounter: 28
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 5, size = 8, value = 0x1c77030; EnqueueCounter: 28
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 6, size = 4, value = 0xf4240; EnqueueCounter: 28
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_1 ): queue = 0x1c35530, kernel = 0x1ebf880, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 28
+<<<< clEnqueueNDRangeKernel created event = 0x2018bf0 -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 0, size = 8, value = 0x1c75280; EnqueueCounter: 29
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 1, size = 8, value = 0x28dfc60; EnqueueCounter: 29
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 2, size = 8, value = 0x28cb2a0; EnqueueCounter: 29
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 3, size = 8, value = 0x1cb7950; EnqueueCounter: 29
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 4, size = 4, value = 0xf4240; EnqueueCounter: 29
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_2 ): queue = 0x1c35530, kernel = 0x21f1c80, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 29
+<<<< clEnqueueNDRangeKernel created event = 0x257bf40 -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 30
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 31
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 0, size = 8, value = 0x1c94450; EnqueueCounter: 32
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 1, size = 8, value = 0x1c8f6f0; EnqueueCounter: 32
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 2, size = 8, value = 0x1c75280; EnqueueCounter: 32
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 3, size = 8, value = 0x28dfc60; EnqueueCounter: 32
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 4, size = 8, value = 0x28cb2a0; EnqueueCounter: 32
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 5, size = 8, value = 0x1c77030; EnqueueCounter: 32
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 6, size = 4, value = 0xf4240; EnqueueCounter: 32
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_1 ): queue = 0x1c35530, kernel = 0x1ebf880, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 32
+<<<< clEnqueueNDRangeKernel created event = 0x257c7a0 -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 0, size = 8, value = 0x1c75280; EnqueueCounter: 33
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 1, size = 8, value = 0x28dfc60; EnqueueCounter: 33
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 2, size = 8, value = 0x28cb2a0; EnqueueCounter: 33
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 3, size = 8, value = 0x1cb7950; EnqueueCounter: 33
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 4, size = 4, value = 0xf4240; EnqueueCounter: 33
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_2 ): queue = 0x1c35530, kernel = 0x21f1c80, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 33
+<<<< clEnqueueNDRangeKernel created event = 0x201a850 -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 34
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 35
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 0, size = 8, value = 0x1c94450; EnqueueCounter: 36
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 1, size = 8, value = 0x1c8f6f0; EnqueueCounter: 36
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 2, size = 8, value = 0x1c75280; EnqueueCounter: 36
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 3, size = 8, value = 0x28dfc60; EnqueueCounter: 36
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 4, size = 8, value = 0x28cb2a0; EnqueueCounter: 36
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 5, size = 8, value = 0x1c77030; EnqueueCounter: 36
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 6, size = 4, value = 0xf4240; EnqueueCounter: 36
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_1 ): queue = 0x1c35530, kernel = 0x1ebf880, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 36
+<<<< clEnqueueNDRangeKernel created event = 0x1c76450 -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 0, size = 8, value = 0x1c75280; EnqueueCounter: 37
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 1, size = 8, value = 0x28dfc60; EnqueueCounter: 37
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 2, size = 8, value = 0x28cb2a0; EnqueueCounter: 37
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 3, size = 8, value = 0x1cb7950; EnqueueCounter: 37
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 4, size = 4, value = 0xf4240; EnqueueCounter: 37
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_2 ): queue = 0x1c35530, kernel = 0x21f1c80, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 37
+<<<< clEnqueueNDRangeKernel created event = 0x1d66360 -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 38
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 39
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 0, size = 8, value = 0x1c94450; EnqueueCounter: 40
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 1, size = 8, value = 0x1c8f6f0; EnqueueCounter: 40
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 2, size = 8, value = 0x1c75280; EnqueueCounter: 40
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 3, size = 8, value = 0x28dfc60; EnqueueCounter: 40
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 4, size = 8, value = 0x28cb2a0; EnqueueCounter: 40
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 5, size = 8, value = 0x1c77030; EnqueueCounter: 40
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 6, size = 4, value = 0xf4240; EnqueueCounter: 40
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_1 ): queue = 0x1c35530, kernel = 0x1ebf880, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 40
+<<<< clEnqueueNDRangeKernel created event = 0x257a650 -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 0, size = 8, value = 0x1c75280; EnqueueCounter: 41
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 1, size = 8, value = 0x28dfc60; EnqueueCounter: 41
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 2, size = 8, value = 0x28cb2a0; EnqueueCounter: 41
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 3, size = 8, value = 0x1cb7950; EnqueueCounter: 41
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 4, size = 4, value = 0xf4240; EnqueueCounter: 41
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_2 ): queue = 0x1c35530, kernel = 0x21f1c80, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 41
+<<<< clEnqueueNDRangeKernel created event = 0x1c78c20 -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 42
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 43
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 0, size = 8, value = 0x1c94450; EnqueueCounter: 44
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 1, size = 8, value = 0x1c8f6f0; EnqueueCounter: 44
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 2, size = 8, value = 0x1c75280; EnqueueCounter: 44
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 3, size = 8, value = 0x28dfc60; EnqueueCounter: 44
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 4, size = 8, value = 0x28cb2a0; EnqueueCounter: 44
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 5, size = 8, value = 0x1c77030; EnqueueCounter: 44
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 6, size = 4, value = 0xf4240; EnqueueCounter: 44
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_1 ): queue = 0x1c35530, kernel = 0x1ebf880, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 44
+<<<< clEnqueueNDRangeKernel created event = 0x28b7950 -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 0, size = 8, value = 0x1c75280; EnqueueCounter: 45
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 1, size = 8, value = 0x28dfc60; EnqueueCounter: 45
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 2, size = 8, value = 0x28cb2a0; EnqueueCounter: 45
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 3, size = 8, value = 0x1cb7950; EnqueueCounter: 45
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 4, size = 4, value = 0xf4240; EnqueueCounter: 45
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_2 ): queue = 0x1c35530, kernel = 0x21f1c80, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 45
+<<<< clEnqueueNDRangeKernel created event = 0x28be4b0 -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 46
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 47
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 0, size = 8, value = 0x1c94450; EnqueueCounter: 48
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 1, size = 8, value = 0x1c8f6f0; EnqueueCounter: 48
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 2, size = 8, value = 0x1c75280; EnqueueCounter: 48
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 3, size = 8, value = 0x28dfc60; EnqueueCounter: 48
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 4, size = 8, value = 0x28cb2a0; EnqueueCounter: 48
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 5, size = 8, value = 0x1c77030; EnqueueCounter: 48
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 6, size = 4, value = 0xf4240; EnqueueCounter: 48
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_1 ): queue = 0x1c35530, kernel = 0x1ebf880, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 48
+<<<< clEnqueueNDRangeKernel created event = 0x1cb2950 -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 0, size = 8, value = 0x1c75280; EnqueueCounter: 49
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 1, size = 8, value = 0x28dfc60; EnqueueCounter: 49
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 2, size = 8, value = 0x28cb2a0; EnqueueCounter: 49
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 3, size = 8, value = 0x1cb7950; EnqueueCounter: 49
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 4, size = 4, value = 0xf4240; EnqueueCounter: 49
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_2 ): queue = 0x1c35530, kernel = 0x21f1c80, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 49
+<<<< clEnqueueNDRangeKernel created event = 0x1c92340 -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 50
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 51
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 0, size = 8, value = 0x1c94450; EnqueueCounter: 52
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 1, size = 8, value = 0x1c8f6f0; EnqueueCounter: 52
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 2, size = 8, value = 0x1c75280; EnqueueCounter: 52
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 3, size = 8, value = 0x28dfc60; EnqueueCounter: 52
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 4, size = 8, value = 0x28cb2a0; EnqueueCounter: 52
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 5, size = 8, value = 0x1c77030; EnqueueCounter: 52
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_1 ): kernel = 0x1ebf880, index = 6, size = 4, value = 0xf4240; EnqueueCounter: 52
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_1 ): queue = 0x1c35530, kernel = 0x1ebf880, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 52
+<<<< clEnqueueNDRangeKernel created event = 0x1c760c0 -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 0, size = 8, value = 0x1c75280; EnqueueCounter: 53
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 1, size = 8, value = 0x28dfc60; EnqueueCounter: 53
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 2, size = 8, value = 0x28cb2a0; EnqueueCounter: 53
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 3, size = 8, value = 0x1cb7950; EnqueueCounter: 53
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( BFS_2 ): kernel = 0x21f1c80, index = 4, size = 4, value = 0xf4240; EnqueueCounter: 53
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( BFS_2 ): queue = 0x1c35530, kernel = 0x21f1c80, global_work_size = < 1000192 x 1 >, local_work_size = < 256 x 1 >; EnqueueCounter: 53
+<<<< clEnqueueNDRangeKernel created event = 0x1c78f30 -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x1c35530, buffer = 0x1cb7950, blocking, offset = 0, cb = 1, ptr = 0x7ffff2121a6f; EnqueueCounter: 54
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clFinish: queue = 0x1c35530; EnqueueCounter: 55
+<<<< clFinish -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x1c35530, buffer = 0x1c77030, blocking, offset = 0, cb = 4000000, ptr = 0x7f63721d6010; EnqueueCounter: 55
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clReleaseMemObject: [ ref count = 1 ] mem = 0x1c94450; EnqueueCounter: 56
+<<<< clReleaseMemObject: [ ref count = 0 ] -> CL_SUCCESS
+>>>> clReleaseMemObject: [ ref count = 1 ] mem = 0x1c8f6f0; EnqueueCounter: 56
+<<<< clReleaseMemObject: [ ref count = 0 ] -> CL_SUCCESS
+>>>> clReleaseMemObject: [ ref count = 1 ] mem = 0x1c75280; EnqueueCounter: 56
+<<<< clReleaseMemObject: [ ref count = 0 ] -> CL_SUCCESS
+>>>> clReleaseMemObject: [ ref count = 1 ] mem = 0x28dfc60; EnqueueCounter: 56
+<<<< clReleaseMemObject: [ ref count = 0 ] -> CL_SUCCESS
+>>>> clReleaseMemObject: [ ref count = 1 ] mem = 0x28cb2a0; EnqueueCounter: 56
+<<<< clReleaseMemObject: [ ref count = 0 ] -> CL_SUCCESS
+>>>> clReleaseMemObject: [ ref count = 1 ] mem = 0x1c77030; EnqueueCounter: 56
+<<<< clReleaseMemObject: [ ref count = 0 ] -> CL_SUCCESS
+>>>> clReleaseMemObject: [ ref count = 1 ] mem = 0x1cb7950; EnqueueCounter: 56
+<<<< clReleaseMemObject: [ ref count = 0 ] -> CL_SUCCESS
+>>>> clReleaseKernel: [ ref count = 1 ] kernel = 0x1ebf880; EnqueueCounter: 56
+<<<< clReleaseKernel: [ ref count = 0 ] -> CL_SUCCESS
+>>>> clReleaseProgram: [ ref count = 2 ] program = 0x1c35c40; EnqueueCounter: 56
+<<<< clReleaseProgram: [ ref count = 1 ] -> CL_SUCCESS
+>>>> clReleaseCommandQueue: [ ref count = 1 ] command_queue = 0x1c35530; EnqueueCounter: 56
+<<<< clReleaseCommandQueue: [ ref count = 0 ] -> CL_SUCCESS
+>>>> clReleaseContext: [ ref count = 1 ] context = 0x1c35140; EnqueueCounter: 56
+<<<< clReleaseContext: [ ref count = 0 ] -> CL_SUCCESS
+CLIntercept is shutting down...
+... shutdown complete.
