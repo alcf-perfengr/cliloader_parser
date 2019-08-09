@@ -1,0 +1,24 @@
+#!/bin/bash
+
+export CLI_ReportToFile=0
+export CLI_LogToFile=1
+export CLI_DllName=$(whichlib libOpenCL.so | head -n 1)
+export CLI_CallLogging=1
+export CLI_DumpProgramSource=1
+export CLI_DumpBuffersBeforeEnqueue=1
+export CLI_DumpBuffersAfterEnqueue=1
+export CLI_DumpArgumentsOnSet=1
+export CLI_CallLoggingEnqueueCounter=1
+
+while true; do
+  case "$1" in
+    -i | --iteration ) shift; export CLI_DumpBuffersMinEnqueue=$1; export CLI_DumpBuffersMaxEnqueue=$1; shift ;;
+    -s | --iteration-start ) shift; export CLI_DumpBuffersMinEnqueue=$1; shift ;;
+    -e | --iteration-end ) shift; export CLI_DumpBuffersMaxEnqueue=$1; shift ;;
+    -- ) shift; break ;;
+    * ) break ;;
+  esac
+done
+
+
+cliloader $@
