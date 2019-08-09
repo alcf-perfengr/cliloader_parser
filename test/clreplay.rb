@@ -6,9 +6,49 @@ $device = OpenCL::platforms.first.devices.first
 $context = OpenCL::create_context($device)
 $queue = $context.create_command_queue($device, properties: [OpenCL::CommandQueue::PROFILING_ENABLE])
 
-def create_buffer_argument(kernel_dir, arg)
-  data = File::read(File::join(kernel_dir, "%02d.buffer.in" % arg.index), mode: "rb")
+TYPE_MAP = {
+  char: :Char,
+  uchar: :UChar,
+  short: :Short,
+  ushort: :UShort,
+  int: :Int,
+  uint: :UInt,
+  long: :Long,
+  ulong: :ULong,
+  float: :Float,
+  double: :Double,
+  half: :Half
+}
+
+NARRAY_TYPE_MAP = {
+  char: NArray::BYTE,
+  uchar: NArray::BYTE,
+  short: NArray::SINT,
+  ushort: NArray::SINT,
+  int: NArray::INT,
+  uint: NArray::SINT,
+  float: NArray::SFLOAT,
+  double: NArray::FLOAT,
+}
+
+def create_buffer_argument(kernel_dir, arg, dir: :in)
+  arg.type_name =~ /(\w+)(\d*)/
+  type = $1.to_sym
+  count = $2.to_i
+
+  data = File::read(File::join(kernel_dir, "%02d.buffer.#{dir}" % arg.index), mode: "rb")
+  if NARRAY_TYPE_MAP[type]
+    n_a = NArray::to_na(data, NARRAY_TYPE_MAP[type])
+    return n_a if dir == :out
+  else
+    return data if dir == :out
+  end
   buffer = $context.create_buffer(data.size, host_ptr: data, flags: OpenCL::Mem::COPY_HOST_PTR)
+  if NARRAY_TYPE_MAP[type]
+    [buffer, n_a]
+  else
+    [buffer, data]
+  end
 end
 
 def create_scalar_argument(kernel_dir, arg)
@@ -17,29 +57,14 @@ def create_scalar_argument(kernel_dir, arg)
   type = $1.to_sym
   count = $2.to_i
   count = 1 if count == 0
-  case type
-  when :char
-  when :uchar
-  when :short
-  when :ushort
-  when :int
-    cl_type = OpenCL::const_get(:"Int#{count}")
-    cl_type::new(*data.unpack("l#{count}"))
-  when :uint
-  when :long
-  when :ulong
-  when :float
-    cl_type = OpenCL::const_get(:"Float#{count}")
-    cl_type::new(*data.unpack("f#{count}"))
-  when :double
-  when :half
-  end
+  cl_type = OpenCL::const_get(:"#{TYPE_MAP[type]}#{count}")
+  cl_type::new(FFI::MemoryPointer.from_string(data))
 end
 
-def create_argument(kernel_dir, arg)
+def create_argument(kernel_dir, arg, dir: :in)
   case arg.address_qualifier
   when OpenCL::Kernel::Arg::AddressQualifier::GLOBAL
-    create_buffer_argument(kernel_dir, arg)
+    create_buffer_argument(kernel_dir, arg, dir: dir)
   #when OpenCL::Kernel::Arg::AddressQualifier::LOCAL
   #when OpenCL::Kernel::Arg::AddressQualifier::CONSTANT
   when OpenCL::Kernel::Arg::AddressQualifier::PRIVATE
@@ -87,8 +112,13 @@ Dir::open(ARGV[0]) { |d|
            create_argument(enqueue_dir, arg)
         }
         args.each_with_index { |a, i|
-          p a
-          kernel.set_arg(i, a)
+          if a.kind_of?(Array)
+            p a[0]
+            kernel.set_arg(i, a[0])
+          else
+            p a
+            kernel.set_arg(i, a)
+          end
         }
         global_work_offset, global_work_size, local_work_size = get_work_group_data(enqueue_dir)
         puts "#{global_work_size} #{local_work_size} (#{global_work_offset})"
@@ -96,6 +126,22 @@ Dir::open(ARGV[0]) { |d|
         $queue.finish
         p event
         p "#{event.profiling_command_end - event.profiling_command_start} ns"
+        out_args = kernel.args.collect { |arg|
+          create_argument(enqueue_dir, arg, dir: :out)
+        }
+        args.zip(out_args).each { |input, output|
+          if input.kind_of?(Array)
+            p input[0]
+            $queue.enqueue_read_buffer(input[0], input[1], blocking: true)
+            if input[1].kind_of?(NArray)
+              error = (output - input[1]).abs.max
+              raise "Computation error!" if input[1].integer? and error != 0
+              puts "Max Error: #{error}."
+            else
+              puts "Match: #{output == input[1]}."
+            end
+          end
+        }
       }
     }
   }
