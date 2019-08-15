@@ -1,0 +1,2349 @@
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+CLIntercept (64-bit) is loading...
+CLintercept file location: /soft/restricted/intel_dga/tools/opencl-intercept-layer/build/cliloader/../intercept/libOpenCL.so
+CLIntercept URL: https://github.com/intel/opencl-intercept-layer
+CLIntercept git description: v2.2.1-140-gb3656b1
+CLIntercept git refspec: refs/heads/master
+CLInterecpt git hash: b3656b1706c38e26060e20ebf2eaa5958965e37a
+CLIntercept optional features:
+    cliloader(supported)
+    cliprof(supported)
+    kernel overrides(supported)
+    ITT tracing(NOT supported)
+    MDAPI(supported)
+CLIntercept environment variable prefix: CLI_
+CLIntercept config file: clintercept.conf
+Read DLL name from user parameters: /soft/restricted/intel_dga/sdk/2019.6.30.011/compiler/latest/lib/libOpenCL.so.1
+Trying to load dispatch from: /soft/restricted/intel_dga/sdk/2019.6.30.011/compiler/latest/lib/libOpenCL.so.1
+... success!
+LogToFile is set to a non-default value!
+CallLogging is set to a non-default value!
+CallLoggingEnqueueCounter is set to a non-default value!
+ReportToStderr is set to a non-default value!
+ReportToFile is set to a non-default value!
+DumpProgramSource is set to a non-default value!
+DumpArgumentsOnSet is set to a non-default value!
+DumpBuffersBeforeEnqueue is set to a non-default value!
+DumpBuffersAfterEnqueue is set to a non-default value!
+DumpBuffersMinEnqueue is set to a non-default value!
+DumpBuffersMaxEnqueue is set to a non-default value!
+Timer Started!
+... loading complete.
+>>>> clGetPlatformIDs; EnqueueCounter: 1
+<<<< clGetPlatformIDs -> CL_SUCCESS
+>>>> clCreateContextFromType: properties = [ CL_CONTEXT_PLATFORM = Intel(R) OpenCL HD Graphics ], device_type = CL_DEVICE_TYPE_GPU (4); EnqueueCounter: 1
+<<<< clCreateContextFromType: returned 0x16daf90 -> CL_SUCCESS
+>>>> clGetContextInfo: param_name = CL_CONTEXT_DEVICES (00001081); EnqueueCounter: 1
+<<<< clGetContextInfo -> CL_SUCCESS
+>>>> clGetContextInfo: param_name = CL_CONTEXT_DEVICES (00001081); EnqueueCounter: 1
+<<<< clGetContextInfo -> CL_SUCCESS
+>>>> clCreateCommandQueue: context = 0x16daf90, device = [ Intel(R) Gen9 HD Graphics NEO (CL_DEVICE_TYPE_GPU) ], properties =  (0); EnqueueCounter: 1
+<<<< clCreateCommandQueue: returned 0x16db3a0 -> CL_SUCCESS
+>>>> clCreateProgramWithSource: context = 0x16daf90, count = 1; EnqueueCounter: 1
+<<<< clCreateProgramWithSource: returned 0x1611220, program number = 0000 -> CL_SUCCESS
+Dumping program to file (inject): /home/videau/CLIntercept_Dump/lud/CLI_0000_A8BDCBC6_source.cl
+Dumping program options to file (inject): /home/videau/CLIntercept_Dump/lud/CLI_0000_A8BDCBC6_0000_708E16C2_options.txt
+>>>> clBuildProgram: program = 0x1611220, pfn_notify = (nil); EnqueueCounter: 1
+<<<< clBuildProgram -> CL_SUCCESS
+>>>> clCreateKernel: program = 0x1611220, kernel_name = lud_diagonal; EnqueueCounter: 1
+<<<< clCreateKernel: returned 0x20374b0 -> CL_SUCCESS
+>>>> clCreateKernel: program = 0x1611220, kernel_name = lud_perimeter; EnqueueCounter: 1
+<<<< clCreateKernel: returned 0x2031c90 -> CL_SUCCESS
+>>>> clCreateKernel: program = 0x1611220, kernel_name = lud_internal; EnqueueCounter: 1
+<<<< clCreateKernel: returned 0x178b4f0 -> CL_SUCCESS
+>>>> clReleaseProgram: [ ref count = 4 ] program = 0x1611220; EnqueueCounter: 1
+<<<< clReleaseProgram: [ ref count = 3 ] -> CL_SUCCESS
+>>>> clCreateBuffer: context = 0x16daf90, flags = CL_MEM_READ_WRITE (1), size = 4194304, host_ptr = (nil); EnqueueCounter: 1
+<<<< clCreateBuffer: returned 0x1763720 -> CL_SUCCESS
+>>>> clEnqueueWriteBuffer: queue = 0x16db3a0, buffer = 0x1763720, blocking, offset = 0, cb = 4194304, ptr = 0x7f1aae831010; EnqueueCounter: 1
+<<<< clEnqueueWriteBuffer -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 2
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 2
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 2
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x0; EnqueueCounter: 2
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 2
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 3
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 3
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 3
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 3
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 3
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x0; EnqueueCounter: 3
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 2016 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 3
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 4
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 4
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 4
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 4
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x0; EnqueueCounter: 4
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 1008 x 1008 >, local_work_size = < 16 x 16 >; EnqueueCounter: 4
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 5
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 5
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 5
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x10; EnqueueCounter: 5
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 5
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 6
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 6
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 6
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 6
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 6
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x10; EnqueueCounter: 6
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1984 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 6
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 7
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 7
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 7
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 7
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x10; EnqueueCounter: 7
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 992 x 992 >, local_work_size = < 16 x 16 >; EnqueueCounter: 7
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 8
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 8
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 8
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x20; EnqueueCounter: 8
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 8
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 9
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 9
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 9
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 9
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 9
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x20; EnqueueCounter: 9
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1952 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 9
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 10
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 10
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 10
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 10
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x20; EnqueueCounter: 10
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 976 x 976 >, local_work_size = < 16 x 16 >; EnqueueCounter: 10
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 11
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 11
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 11
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x30; EnqueueCounter: 11
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 11
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 12
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 12
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 12
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 12
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 12
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x30; EnqueueCounter: 12
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1920 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 12
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 13
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 13
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 13
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 13
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x30; EnqueueCounter: 13
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 960 x 960 >, local_work_size = < 16 x 16 >; EnqueueCounter: 13
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 14
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 14
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 14
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x40; EnqueueCounter: 14
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 14
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 15
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 15
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 15
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 15
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 15
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x40; EnqueueCounter: 15
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1888 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 15
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 16
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 16
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 16
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 16
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x40; EnqueueCounter: 16
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 944 x 944 >, local_work_size = < 16 x 16 >; EnqueueCounter: 16
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 17
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 17
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 17
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x50; EnqueueCounter: 17
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 17
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 18
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 18
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 18
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 18
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 18
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x50; EnqueueCounter: 18
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1856 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 18
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 19
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 19
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 19
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 19
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x50; EnqueueCounter: 19
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 928 x 928 >, local_work_size = < 16 x 16 >; EnqueueCounter: 19
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 20
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 20
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 20
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x60; EnqueueCounter: 20
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 20
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 21
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 21
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 21
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 21
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 21
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x60; EnqueueCounter: 21
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1824 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 21
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 22
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 22
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 22
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 22
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x60; EnqueueCounter: 22
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 912 x 912 >, local_work_size = < 16 x 16 >; EnqueueCounter: 22
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 23
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 23
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 23
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x70; EnqueueCounter: 23
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 23
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 24
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 24
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 24
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 24
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 24
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x70; EnqueueCounter: 24
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1792 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 24
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 25
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 25
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 25
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 25
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x70; EnqueueCounter: 25
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 896 x 896 >, local_work_size = < 16 x 16 >; EnqueueCounter: 25
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 26
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 26
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 26
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x80; EnqueueCounter: 26
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 26
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 27
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 27
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 27
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 27
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 27
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x80; EnqueueCounter: 27
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1760 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 27
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 28
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 28
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 28
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 28
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x80; EnqueueCounter: 28
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 880 x 880 >, local_work_size = < 16 x 16 >; EnqueueCounter: 28
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 29
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 29
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 29
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x90; EnqueueCounter: 29
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 29
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 30
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 30
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 30
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 30
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 30
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x90; EnqueueCounter: 30
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1728 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 30
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 31
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 31
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 31
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 31
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x90; EnqueueCounter: 31
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 864 x 864 >, local_work_size = < 16 x 16 >; EnqueueCounter: 31
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 32
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 32
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 32
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0xa0; EnqueueCounter: 32
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 32
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 33
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 33
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 33
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 33
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 33
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0xa0; EnqueueCounter: 33
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1696 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 33
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 34
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 34
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 34
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 34
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0xa0; EnqueueCounter: 34
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 848 x 848 >, local_work_size = < 16 x 16 >; EnqueueCounter: 34
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 35
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 35
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 35
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0xb0; EnqueueCounter: 35
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 35
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 36
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 36
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 36
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 36
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 36
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0xb0; EnqueueCounter: 36
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1664 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 36
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 37
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 37
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 37
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 37
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0xb0; EnqueueCounter: 37
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 832 x 832 >, local_work_size = < 16 x 16 >; EnqueueCounter: 37
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 38
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 38
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 38
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0xc0; EnqueueCounter: 38
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 38
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 39
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 39
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 39
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 39
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 39
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0xc0; EnqueueCounter: 39
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1632 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 39
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 40
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 40
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 40
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 40
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0xc0; EnqueueCounter: 40
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 816 x 816 >, local_work_size = < 16 x 16 >; EnqueueCounter: 40
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 41
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 41
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 41
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0xd0; EnqueueCounter: 41
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 41
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 42
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 42
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 42
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 42
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 42
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0xd0; EnqueueCounter: 42
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1600 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 42
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 43
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 43
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 43
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 43
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0xd0; EnqueueCounter: 43
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 800 x 800 >, local_work_size = < 16 x 16 >; EnqueueCounter: 43
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 44
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 44
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 44
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0xe0; EnqueueCounter: 44
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 44
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 45
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 45
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 45
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 45
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 45
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0xe0; EnqueueCounter: 45
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1568 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 45
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 46
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 46
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 46
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 46
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0xe0; EnqueueCounter: 46
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 784 x 784 >, local_work_size = < 16 x 16 >; EnqueueCounter: 46
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 47
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 47
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 47
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0xf0; EnqueueCounter: 47
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 47
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 48
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 48
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 48
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 48
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 48
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0xf0; EnqueueCounter: 48
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1536 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 48
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 49
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 49
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 49
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 49
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0xf0; EnqueueCounter: 49
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 768 x 768 >, local_work_size = < 16 x 16 >; EnqueueCounter: 49
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 50
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 50
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 50
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x100; EnqueueCounter: 50
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 50
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 51
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 51
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 51
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 51
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 51
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x100; EnqueueCounter: 51
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1504 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 51
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 52
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 52
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 52
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 52
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x100; EnqueueCounter: 52
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 752 x 752 >, local_work_size = < 16 x 16 >; EnqueueCounter: 52
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 53
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 53
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 53
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x110; EnqueueCounter: 53
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 53
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 54
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 54
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 54
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 54
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 54
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x110; EnqueueCounter: 54
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1472 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 54
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 55
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 55
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 55
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 55
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x110; EnqueueCounter: 55
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 736 x 736 >, local_work_size = < 16 x 16 >; EnqueueCounter: 55
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 56
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 56
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 56
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x120; EnqueueCounter: 56
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 56
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 57
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 57
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 57
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 57
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 57
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x120; EnqueueCounter: 57
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1440 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 57
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 58
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 58
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 58
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 58
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x120; EnqueueCounter: 58
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 720 x 720 >, local_work_size = < 16 x 16 >; EnqueueCounter: 58
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 59
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 59
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 59
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x130; EnqueueCounter: 59
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 59
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 60
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 60
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 60
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 60
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 60
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x130; EnqueueCounter: 60
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1408 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 60
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 61
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 61
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 61
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 61
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x130; EnqueueCounter: 61
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 704 x 704 >, local_work_size = < 16 x 16 >; EnqueueCounter: 61
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 62
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 62
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 62
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x140; EnqueueCounter: 62
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 62
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 63
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 63
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 63
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 63
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 63
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x140; EnqueueCounter: 63
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1376 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 63
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 64
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 64
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 64
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 64
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x140; EnqueueCounter: 64
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 688 x 688 >, local_work_size = < 16 x 16 >; EnqueueCounter: 64
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 65
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 65
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 65
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x150; EnqueueCounter: 65
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 65
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 66
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 66
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 66
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 66
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 66
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x150; EnqueueCounter: 66
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1344 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 66
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 67
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 67
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 67
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 67
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x150; EnqueueCounter: 67
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 672 x 672 >, local_work_size = < 16 x 16 >; EnqueueCounter: 67
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 68
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 68
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 68
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x160; EnqueueCounter: 68
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 68
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 69
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 69
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 69
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 69
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 69
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x160; EnqueueCounter: 69
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1312 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 69
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 70
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 70
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 70
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 70
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x160; EnqueueCounter: 70
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 656 x 656 >, local_work_size = < 16 x 16 >; EnqueueCounter: 70
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 71
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 71
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 71
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x170; EnqueueCounter: 71
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 71
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 72
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 72
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 72
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 72
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 72
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x170; EnqueueCounter: 72
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1280 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 72
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 73
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 73
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 73
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 73
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x170; EnqueueCounter: 73
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 640 x 640 >, local_work_size = < 16 x 16 >; EnqueueCounter: 73
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 74
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 74
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 74
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x180; EnqueueCounter: 74
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 74
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 75
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 75
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 75
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 75
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 75
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x180; EnqueueCounter: 75
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1248 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 75
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 76
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 76
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 76
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 76
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x180; EnqueueCounter: 76
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 624 x 624 >, local_work_size = < 16 x 16 >; EnqueueCounter: 76
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 77
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 77
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 77
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x190; EnqueueCounter: 77
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 77
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 78
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 78
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 78
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 78
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 78
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x190; EnqueueCounter: 78
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1216 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 78
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 79
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 79
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 79
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 79
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x190; EnqueueCounter: 79
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 608 x 608 >, local_work_size = < 16 x 16 >; EnqueueCounter: 79
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 80
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 80
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 80
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x1a0; EnqueueCounter: 80
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 80
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 81
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 81
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 81
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 81
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 81
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x1a0; EnqueueCounter: 81
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1184 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 81
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 82
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 82
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 82
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 82
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x1a0; EnqueueCounter: 82
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 592 x 592 >, local_work_size = < 16 x 16 >; EnqueueCounter: 82
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 83
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 83
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 83
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x1b0; EnqueueCounter: 83
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 83
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 84
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 84
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 84
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 84
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 84
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x1b0; EnqueueCounter: 84
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1152 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 84
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 85
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 85
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 85
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 85
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x1b0; EnqueueCounter: 85
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 576 x 576 >, local_work_size = < 16 x 16 >; EnqueueCounter: 85
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 86
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 86
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 86
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x1c0; EnqueueCounter: 86
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 86
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 87
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 87
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 87
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 87
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 87
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x1c0; EnqueueCounter: 87
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1120 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 87
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 88
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 88
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 88
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 88
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x1c0; EnqueueCounter: 88
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 560 x 560 >, local_work_size = < 16 x 16 >; EnqueueCounter: 88
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 89
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 89
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 89
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x1d0; EnqueueCounter: 89
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 89
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 90
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 90
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 90
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 90
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 90
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x1d0; EnqueueCounter: 90
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1088 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 90
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 91
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 91
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 91
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 91
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x1d0; EnqueueCounter: 91
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 544 x 544 >, local_work_size = < 16 x 16 >; EnqueueCounter: 91
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 92
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 92
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 92
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x1e0; EnqueueCounter: 92
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 92
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 93
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 93
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 93
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 93
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 93
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x1e0; EnqueueCounter: 93
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1056 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 93
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 94
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 94
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 94
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 94
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x1e0; EnqueueCounter: 94
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 528 x 528 >, local_work_size = < 16 x 16 >; EnqueueCounter: 94
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 95
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 95
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 95
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x1f0; EnqueueCounter: 95
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 95
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 96
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 96
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 96
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 96
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 96
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x1f0; EnqueueCounter: 96
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 1024 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 96
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 97
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 97
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 97
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 97
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x1f0; EnqueueCounter: 97
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 512 x 512 >, local_work_size = < 16 x 16 >; EnqueueCounter: 97
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 98
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 98
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 98
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x200; EnqueueCounter: 98
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 98
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 99
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 99
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 99
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 99
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 99
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x200; EnqueueCounter: 99
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 992 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 99
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 100
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 100
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 100
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 100
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x200; EnqueueCounter: 100
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 496 x 496 >, local_work_size = < 16 x 16 >; EnqueueCounter: 100
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 101
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 101
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 101
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x210; EnqueueCounter: 101
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 101
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 102
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 102
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 102
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 102
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 102
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x210; EnqueueCounter: 102
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 960 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 102
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 103
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 103
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 103
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 103
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x210; EnqueueCounter: 103
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 480 x 480 >, local_work_size = < 16 x 16 >; EnqueueCounter: 103
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 104
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 104
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 104
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x220; EnqueueCounter: 104
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 104
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 105
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 105
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 105
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 105
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 105
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x220; EnqueueCounter: 105
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 928 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 105
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 106
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 106
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 106
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 106
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x220; EnqueueCounter: 106
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 464 x 464 >, local_work_size = < 16 x 16 >; EnqueueCounter: 106
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 107
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 107
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 107
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x230; EnqueueCounter: 107
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 107
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 108
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 108
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 108
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 108
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 108
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x230; EnqueueCounter: 108
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 896 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 108
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 109
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 109
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 109
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 109
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x230; EnqueueCounter: 109
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 448 x 448 >, local_work_size = < 16 x 16 >; EnqueueCounter: 109
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 110
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 110
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 110
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x240; EnqueueCounter: 110
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 110
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 111
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 111
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 111
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 111
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 111
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x240; EnqueueCounter: 111
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 864 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 111
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 112
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 112
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 112
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 112
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x240; EnqueueCounter: 112
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 432 x 432 >, local_work_size = < 16 x 16 >; EnqueueCounter: 112
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 113
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 113
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 113
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x250; EnqueueCounter: 113
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 113
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 114
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 114
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 114
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 114
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 114
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x250; EnqueueCounter: 114
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 832 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 114
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 115
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 115
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 115
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 115
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x250; EnqueueCounter: 115
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 416 x 416 >, local_work_size = < 16 x 16 >; EnqueueCounter: 115
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 116
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 116
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 116
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x260; EnqueueCounter: 116
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 116
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 117
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 117
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 117
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 117
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 117
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x260; EnqueueCounter: 117
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 800 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 117
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 118
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 118
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 118
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 118
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x260; EnqueueCounter: 118
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 400 x 400 >, local_work_size = < 16 x 16 >; EnqueueCounter: 118
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 119
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 119
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 119
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x270; EnqueueCounter: 119
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 119
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 120
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 120
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 120
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 120
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 120
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x270; EnqueueCounter: 120
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 768 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 120
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 121
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 121
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 121
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 121
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x270; EnqueueCounter: 121
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 384 x 384 >, local_work_size = < 16 x 16 >; EnqueueCounter: 121
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 122
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 122
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 122
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x280; EnqueueCounter: 122
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 122
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 123
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 123
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 123
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 123
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 123
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x280; EnqueueCounter: 123
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 736 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 123
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 124
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 124
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 124
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 124
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x280; EnqueueCounter: 124
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 368 x 368 >, local_work_size = < 16 x 16 >; EnqueueCounter: 124
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 125
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 125
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 125
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x290; EnqueueCounter: 125
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 125
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 126
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 126
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 126
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 126
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 126
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x290; EnqueueCounter: 126
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 704 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 126
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 127
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 127
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 127
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 127
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x290; EnqueueCounter: 127
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 352 x 352 >, local_work_size = < 16 x 16 >; EnqueueCounter: 127
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 128
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 128
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 128
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x2a0; EnqueueCounter: 128
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 128
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 129
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 129
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 129
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 129
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 129
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x2a0; EnqueueCounter: 129
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 672 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 129
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 130
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 130
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 130
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 130
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x2a0; EnqueueCounter: 130
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 336 x 336 >, local_work_size = < 16 x 16 >; EnqueueCounter: 130
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 131
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 131
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 131
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x2b0; EnqueueCounter: 131
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 131
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 132
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 132
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 132
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 132
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 132
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x2b0; EnqueueCounter: 132
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 640 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 132
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 133
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 133
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 133
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 133
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x2b0; EnqueueCounter: 133
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 320 x 320 >, local_work_size = < 16 x 16 >; EnqueueCounter: 133
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 134
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 134
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 134
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x2c0; EnqueueCounter: 134
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 134
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 135
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 135
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 135
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 135
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 135
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x2c0; EnqueueCounter: 135
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 608 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 135
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 136
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 136
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 136
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 136
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x2c0; EnqueueCounter: 136
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 304 x 304 >, local_work_size = < 16 x 16 >; EnqueueCounter: 136
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 137
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 137
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 137
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x2d0; EnqueueCounter: 137
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 137
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 138
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 138
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 138
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 138
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 138
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x2d0; EnqueueCounter: 138
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 576 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 138
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 139
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 139
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 139
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 139
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x2d0; EnqueueCounter: 139
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 288 x 288 >, local_work_size = < 16 x 16 >; EnqueueCounter: 139
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 140
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 140
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 140
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x2e0; EnqueueCounter: 140
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 140
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 141
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 141
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 141
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 141
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 141
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x2e0; EnqueueCounter: 141
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 544 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 141
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 142
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 142
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 142
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 142
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x2e0; EnqueueCounter: 142
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 272 x 272 >, local_work_size = < 16 x 16 >; EnqueueCounter: 142
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 143
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 143
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 143
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x2f0; EnqueueCounter: 143
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 143
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 144
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 144
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 144
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 144
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 144
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x2f0; EnqueueCounter: 144
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 512 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 144
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 145
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 145
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 145
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 145
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x2f0; EnqueueCounter: 145
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 256 x 256 >, local_work_size = < 16 x 16 >; EnqueueCounter: 145
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 146
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 146
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 146
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x300; EnqueueCounter: 146
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 146
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 147
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 147
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 147
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 147
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 147
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x300; EnqueueCounter: 147
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 480 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 147
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 148
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 148
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 148
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 148
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x300; EnqueueCounter: 148
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 240 x 240 >, local_work_size = < 16 x 16 >; EnqueueCounter: 148
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 149
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 149
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 149
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x310; EnqueueCounter: 149
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 149
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 150
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 150
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 150
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 150
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 150
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x310; EnqueueCounter: 150
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 448 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 150
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 151
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 151
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 151
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 151
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x310; EnqueueCounter: 151
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 224 x 224 >, local_work_size = < 16 x 16 >; EnqueueCounter: 151
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 152
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 152
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 152
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x320; EnqueueCounter: 152
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 152
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 153
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 153
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 153
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 153
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 153
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x320; EnqueueCounter: 153
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 416 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 153
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 154
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 154
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 154
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 154
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x320; EnqueueCounter: 154
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 208 x 208 >, local_work_size = < 16 x 16 >; EnqueueCounter: 154
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 155
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 155
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 155
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x330; EnqueueCounter: 155
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 155
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 156
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 156
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 156
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 156
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 156
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x330; EnqueueCounter: 156
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 384 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 156
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 157
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 157
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 157
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 157
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x330; EnqueueCounter: 157
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 192 x 192 >, local_work_size = < 16 x 16 >; EnqueueCounter: 157
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 158
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 158
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 158
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x340; EnqueueCounter: 158
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 158
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 159
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 159
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 159
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 159
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 159
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x340; EnqueueCounter: 159
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 352 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 159
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 160
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 160
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 160
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 160
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x340; EnqueueCounter: 160
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 176 x 176 >, local_work_size = < 16 x 16 >; EnqueueCounter: 160
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 161
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 161
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 161
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x350; EnqueueCounter: 161
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 161
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 162
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 162
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 162
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 162
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 162
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x350; EnqueueCounter: 162
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 320 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 162
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 163
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 163
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 163
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 163
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x350; EnqueueCounter: 163
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 160 x 160 >, local_work_size = < 16 x 16 >; EnqueueCounter: 163
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 164
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 164
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 164
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x360; EnqueueCounter: 164
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 164
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 165
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 165
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 165
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 165
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 165
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x360; EnqueueCounter: 165
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 288 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 165
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 166
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 166
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 166
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 166
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x360; EnqueueCounter: 166
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 144 x 144 >, local_work_size = < 16 x 16 >; EnqueueCounter: 166
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 167
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 167
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 167
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x370; EnqueueCounter: 167
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 167
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 168
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 168
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 168
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 168
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 168
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x370; EnqueueCounter: 168
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 256 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 168
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 169
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 169
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 169
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 169
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x370; EnqueueCounter: 169
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 128 x 128 >, local_work_size = < 16 x 16 >; EnqueueCounter: 169
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 170
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 170
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 170
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x380; EnqueueCounter: 170
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 170
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 171
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 171
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 171
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 171
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 171
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x380; EnqueueCounter: 171
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 224 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 171
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 172
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 172
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 172
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 172
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x380; EnqueueCounter: 172
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 112 x 112 >, local_work_size = < 16 x 16 >; EnqueueCounter: 172
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 173
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 173
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 173
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x390; EnqueueCounter: 173
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 173
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 174
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 174
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 174
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 174
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 174
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x390; EnqueueCounter: 174
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 192 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 174
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 175
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 175
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 175
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 175
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x390; EnqueueCounter: 175
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 96 x 96 >, local_work_size = < 16 x 16 >; EnqueueCounter: 175
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 176
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 176
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 176
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x3a0; EnqueueCounter: 176
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 176
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 177
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 177
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 177
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 177
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 177
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x3a0; EnqueueCounter: 177
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 160 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 177
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 178
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 178
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 178
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 178
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x3a0; EnqueueCounter: 178
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 80 x 80 >, local_work_size = < 16 x 16 >; EnqueueCounter: 178
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 179
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 179
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 179
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x3b0; EnqueueCounter: 179
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 179
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 180
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 180
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 180
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 180
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 180
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x3b0; EnqueueCounter: 180
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 128 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 180
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 181
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 181
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 181
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 181
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x3b0; EnqueueCounter: 181
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 64 x 64 >, local_work_size = < 16 x 16 >; EnqueueCounter: 181
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 182
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 182
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 182
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x3c0; EnqueueCounter: 182
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 182
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 183
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 183
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 183
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 183
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 183
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x3c0; EnqueueCounter: 183
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 96 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 183
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 184
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 184
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 184
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 184
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x3c0; EnqueueCounter: 184
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 48 x 48 >, local_work_size = < 16 x 16 >; EnqueueCounter: 184
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 185
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 185
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 185
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x3d0; EnqueueCounter: 185
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 185
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 186
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 186
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 186
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 186
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 186
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x3d0; EnqueueCounter: 186
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 64 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 186
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 187
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 187
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 187
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 187
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x3d0; EnqueueCounter: 187
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 32 x 32 >, local_work_size = < 16 x 16 >; EnqueueCounter: 187
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 188
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 188
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 188
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x3e0; EnqueueCounter: 188
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 188
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 189
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 1, size = 1024; EnqueueCounter: 189
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 2, size = 1024; EnqueueCounter: 189
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 3, size = 1024; EnqueueCounter: 189
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 4, size = 4, value = 0x400; EnqueueCounter: 189
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_perimeter ): kernel = 0x2031c90, index = 5, size = 4, value = 0x3e0; EnqueueCounter: 189
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_perimeter ): queue = 0x16db3a0, kernel = 0x2031c90, global_work_size = < 32 x 1 >, local_work_size = < 32 x 1 >; EnqueueCounter: 189
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 190
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 1, size = 1024; EnqueueCounter: 190
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 2, size = 1024; EnqueueCounter: 190
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 3, size = 4, value = 0x400; EnqueueCounter: 190
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_internal ): kernel = 0x178b4f0, index = 4, size = 4, value = 0x3e0; EnqueueCounter: 190
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_internal ): queue = 0x16db3a0, kernel = 0x178b4f0, global_work_size = < 16 x 16 >, local_work_size = < 16 x 16 >; EnqueueCounter: 190
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 0, size = 8, value = 0x1763720; EnqueueCounter: 191
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 1, size = 1024; EnqueueCounter: 191
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 2, size = 4, value = 0x400; EnqueueCounter: 191
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clSetKernelArg( lud_diagonal ): kernel = 0x20374b0, index = 3, size = 4, value = 0x3f0; EnqueueCounter: 191
+<<<< clSetKernelArg -> CL_SUCCESS
+>>>> clEnqueueNDRangeKernel( lud_diagonal ): queue = 0x16db3a0, kernel = 0x20374b0, global_work_size = < 16 x 1 >, local_work_size = < 16 x 1 >; EnqueueCounter: 191
+<<<< clEnqueueNDRangeKernel -> CL_SUCCESS
+>>>> clEnqueueReadBuffer: queue = 0x16db3a0, buffer = 0x1763720, blocking, offset = 0, cb = 4194304, ptr = 0x7f1aae831010; EnqueueCounter: 192
+<<<< clEnqueueReadBuffer -> CL_SUCCESS
+>>>> clFinish: queue = 0x16db3a0; EnqueueCounter: 193
+<<<< clFinish -> CL_SUCCESS
+>>>> clReleaseMemObject: [ ref count = 1 ] mem = 0x1763720; EnqueueCounter: 193
+<<<< clReleaseMemObject: [ ref count = 0 ] -> CL_SUCCESS
+>>>> clReleaseCommandQueue: [ ref count = 1 ] command_queue = 0x16db3a0; EnqueueCounter: 193
+<<<< clReleaseCommandQueue: [ ref count = 0 ] -> CL_SUCCESS
+>>>> clReleaseContext: [ ref count = 1 ] context = 0x16daf90; EnqueueCounter: 193
+<<<< clReleaseContext: [ ref count = 0 ] -> CL_SUCCESS
+CLIntercept is shutting down...
+... shutdown complete.

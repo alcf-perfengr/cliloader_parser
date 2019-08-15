@@ -4,17 +4,25 @@ module CLILoader
 
     class Obj
       attr_reader :clid
-      attr_accessor :reference_count
       attr_reader :creation_date
       attr_accessor :deletion_date
       attr_reader :infos
+      attr_reader :state
 
       def initialize(clid, creation_date, **infos)
         @clid = clid
-        @reference_count = 1
         @creation_date = creation_date
         @deletion_date = nil
         @infos = infos
+        @state = {reference_count: 1}
+      end
+
+      def reference_count
+        @state[:reference_count]
+      end
+
+      def reference_count=(v)
+        @state[:reference_count] = v
       end
 
     end
@@ -23,7 +31,7 @@ module CLILoader
       attr_reader :call_params
       attr_reader :returns
       attr_reader :returned
-      attr_reader :callback
+      attr_reader :callbacks
 
       def cl_name
         "cl" << self.name.split("::").last
@@ -45,9 +53,18 @@ module CLILoader
           CLILoader::Parser.objects[returned].push o
           @returned = o
         end
-        if self.class.callback
-          self.class.callback.call(self)
+        if self.class.callbacks
+          self.class.callbacks.each { |c| c.call(self) }
         end
+      end
+
+      def self.register_callback(callback)
+        unregister_callback(callback)
+        @callbacks.push callback if callback
+      end
+
+      def self.unregister_callback(callback)
+        @callbacks.delete(callback) if callback
       end
 
       def self.inherited(subclass)
@@ -60,7 +77,8 @@ module CLILoader
           @call_params = call_params
           @returns = returns
           @returned = returned
-          @callback = callback
+          @callbacks = []
+          @callbacks.push callback if callback
         end)
       end
 
@@ -75,7 +93,7 @@ module CLILoader
       end
 
       def self.included(klass)
-        klass.instance_variable_set(:@callback, lambda { |event| event.release })
+        klass.instance_variable_set(:@callbacks, [lambda { |event| event.release }])
       end
 
       def self.create(sym, call_params)
@@ -93,7 +111,7 @@ module CLILoader
       end
 
       def self.included(klass)
-        klass.instance_variable_set(:@callback, lambda { |event| event.retain })
+        klass.instance_variable_set(:@callbacks, [lambda { |event| event.retain }])
       end
 
       def self.create(sym, call_params)
@@ -128,9 +146,22 @@ module CLILoader
     end
 
     class Program < Obj
+      def initialize(*args)
+        super
+        @state[:source] = nil
+        @state[:compile_number] = 0
+        @state[:build_options] = nil
+      end
     end
 
     class Kernel < Obj
+      def initialize(*args)
+        super
+        @state[:args] = []
+        @state[:arg_files] = []
+        @state[:arg_buff_files_in] = []
+        @state[:arg_buff_files_out] = []
+      end
     end
 
     class Mem < Obj
@@ -144,6 +175,7 @@ module CLILoader
     Evt::create :GetDeviceIDs, call_params: { platform: NameList, device_type: Flags }
     Evt::create :GetDeviceInfo, call_params: { device: NameList, param_name: Flags }
     Evt::create :CreateContext, call_params: { properties: NameList, num_devices: Integer, devices: NameList }, returned: Context
+    Evt::create :GetContextInfo, call_params: { context: Context, param_name: Flags }
     Evt::create :CreateCommandQueue, call_params: { context: Context, device: NameList, properties: Flags }, returned: CommandQueue
     Evt::create :CreateProgramWithSource, call_params: { context: Context, count: Integer }, returns: { :"program number" => String }, returned: Program
     Evt::create :BuildProgram, call_params: { program: Program, pfn_notify: Pointer }

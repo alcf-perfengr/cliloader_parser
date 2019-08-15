@@ -6,17 +6,14 @@ class TestExtractor < Minitest::Test
     File::open("./3D/clintercept_log.txt", "r") { |f|
       objects, events = CLILoader::Parser.parse(f)
     }
-    program_sources = nil
-    buffer_inputs = nil
-    buffer_outputs = nil
-    set_arg_values = nil
+    files = nil
     Dir::open("./3D/") { |d|
-      program_sources, buffer_inputs, buffer_outputs, set_arg_values = CLILoader::Files::match_files(d, events)
+      files = CLILoader::Files::match_files(d, events)
     }
     FileUtils.remove_entry("./3D_output") if Dir::exist?("./3D_output")
     Dir::mkdir("./3D_output")
     Dir::open("./3D_output") { |d|
-      CLILoader::Extractor.extract_kernels(d, objects, events, program_sources, buffer_inputs, buffer_outputs, set_arg_values)
+      CLILoader::Extractor.extract_kernels(d, objects, events, *files)
     }
     assert_equal( <<EOF, `find 3D_output | sort`)
 3D_output
@@ -52,17 +49,14 @@ EOF
     File::open("./bfs/clintercept_log.txt", "r") { |f|
       objects, events = CLILoader::Parser.parse(f)
     }
-    program_sources = nil
-    buffer_inputs = nil
-    buffer_outputs = nil
-    set_arg_values = nil
+    files = nil
     Dir::open("./bfs/") { |d|
-      program_sources, buffer_inputs, buffer_outputs, set_arg_values = CLILoader::Files::match_files(d, events)
+      files = CLILoader::Files::match_files(d, events)
     }
     FileUtils.remove_entry("./bfs_output") if Dir::exist?("./bfs_output")
     Dir::mkdir("./bfs_output")
     Dir::open("./bfs_output") { |d|
-      CLILoader::Extractor.extract_kernels(d, objects, events, program_sources, buffer_inputs, buffer_outputs, set_arg_values)
+      CLILoader::Extractor.extract_kernels(d, objects, events, *files)
     }
     assert_equal( <<EOF, `find bfs_output | sort`)
 bfs_output

@@ -55,7 +55,7 @@ module CLILoader
       }
     end
 
-    def self.extract_kernels(dir, objects, events, program_sources, buffer_inputs, buffer_outputs, arg_values)
+    def self.extract_kernels(dir, objects, events, program_sources, program_build_options, buffer_inputs, buffer_outputs, arg_values)
       programs = []
       objects.each { |k, obj_list|
         obj_list.each { |obj|
@@ -68,6 +68,7 @@ module CLILoader
           kernels.push obj if obj.kind_of? CLILoader::CL::Kernel
         }
       }
+
       enqueues = buffer_inputs.collect { |k, (ev, arg_num)| ev }
       enqueues += buffer_outputs.collect { |k, (ev, arg_num)| ev }
       enqueues.uniq!
@@ -78,9 +79,9 @@ module CLILoader
        
       programs.each { |p|
         number = p.infos[:"program number"]
+        src = program_sources.find { |k, v| v.returned == p }
         dirpath = File.join(dir.path, "%04d" % number)
         Dir::mkdir(dirpath) unless Dir.exist?(dirpath)
-        src = program_sources.find { |k, v| v.returned == p }
         FileUtils.cp src.first, File.join(dirpath, "source.cl")
         prog_kernels = kernels.select { |k| k.infos[:program] == p }
 
