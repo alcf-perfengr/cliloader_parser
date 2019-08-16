@@ -61,11 +61,17 @@ def create_scalar_argument(kernel_dir, arg)
   cl_type::new(FFI::MemoryPointer.from_string(data))
 end
 
+def create_local_argument(kernel_dir, arg)
+  data = File::read(File::join(kernel_dir, "%02d.in" % arg.index), mode: "rb")
+  data.unpack("J").first
+end
+
 def create_argument(kernel_dir, arg, dir: :in)
   case arg.address_qualifier
   when OpenCL::Kernel::Arg::AddressQualifier::GLOBAL
     create_buffer_argument(kernel_dir, arg, dir: dir)
-  #when OpenCL::Kernel::Arg::AddressQualifier::LOCAL
+  when OpenCL::Kernel::Arg::AddressQualifier::LOCAL
+    create_local_argument(kernel_dir, arg)
   #when OpenCL::Kernel::Arg::AddressQualifier::CONSTANT
   when OpenCL::Kernel::Arg::AddressQualifier::PRIVATE
     create_scalar_argument(kernel_dir, arg)
@@ -100,47 +106,55 @@ Dir::open(ARGV[0]) { |d|
   d.lazy.reject { |e| e == ".." || e == "." }.each { |subdir|
     program_dir = Dir::open(File::join(d.path, subdir))
     program = $context.create_program_with_source(File::read(File::join(program_dir.path, "source.cl")))
-    program.build(options: "-cl-kernel-arg-info")
-    program_dir.lazy.reject { |e| e == ".." || e == "." }.select { |entry| Dir.exist?(File::join(program_dir.path,entry)) }.each { |ssubdir|
-      kernel_dir = Dir::open(File::join(program_dir.path, ssubdir))
-      kernel = program.create_kernel(ssubdir)
-      p kernel
-      arguments = []
-      kernel_dir.lazy.reject { |e| e == ".." || e == "." }.each { |sssubdir|
-        enqueue_dir = Dir::open(File::join(kernel_dir.path, sssubdir))
-        args = kernel.args.collect { |arg|
-           create_argument(enqueue_dir, arg)
-        }
-        args.each_with_index { |a, i|
-          if a.kind_of?(Array)
-            p a[0]
-            kernel.set_arg(i, a[0])
-          else
-            p a
-            kernel.set_arg(i, a)
-          end
-        }
-        global_work_offset, global_work_size, local_work_size = get_work_group_data(enqueue_dir)
-        puts "#{global_work_size} #{local_work_size} (#{global_work_offset})"
-        event = $queue.enqueue_NDrange_kernel(kernel, global_work_size, local_work_size: local_work_size, global_work_offset: global_work_offset)
-        $queue.finish
-        p event
-        p "#{event.profiling_command_end - event.profiling_command_start} ns"
-        out_args = kernel.args.collect { |arg|
-          create_argument(enqueue_dir, arg, dir: :out)
-        }
-        args.zip(out_args).each { |input, output|
-          if input.kind_of?(Array)
-            p input[0]
-            $queue.enqueue_read_buffer(input[0], input[1], blocking: true)
-            if input[1].kind_of?(NArray)
-              error = (output - input[1]).abs.max
-              raise "Computation error!" if input[1].integer? and error != 0
-              puts "Max Error: #{error}."
+    program_dir.lazy.reject { |e| e == ".." || e == "." }.select { |entry| Dir.exist?(File::join(program_dir.path,entry)) }.each { |osubdir|
+      option_dir = Dir::open(File::join(program_dir.path, osubdir))
+      options = ""
+      options << File::read(File::join(option_dir.path, "options.txt")) if File.exist?(File::join(option_dir.path, "options.txt"))
+      options << " -cl-kernel-arg-info" unless options.match("-cl-kernel-arg-info")
+      program.build(options: options)
+      option_dir.lazy.reject { |e| e == ".." || e == "." }.select { |entry| Dir.exist?(File::join(option_dir.path,entry)) }.each { |ssubdir|
+        kernel_dir = Dir::open(File::join(option_dir.path, ssubdir))
+        kernel = program.create_kernel(ssubdir)
+        p kernel
+        arguments = []
+        kernel_dir.lazy.reject { |e| e == ".." || e == "." }.each { |sssubdir|
+          enqueue_dir = Dir::open(File::join(kernel_dir.path, sssubdir))
+          args = kernel.args.collect { |arg|
+             create_argument(enqueue_dir, arg)
+          }
+          args.each_with_index { |a, i|
+            if a.kind_of?(Array)
+              p a[0]
+              kernel.set_arg(i, a[0])
+            elsif a.kind_of?(Numeric)
+              kernel.set_arg(i, nil, a)
             else
-              puts "Match: #{output == input[1]}."
+              p a
+              kernel.set_arg(i, a)
             end
-          end
+          }
+          global_work_offset, global_work_size, local_work_size = get_work_group_data(enqueue_dir)
+          puts "#{global_work_size} #{local_work_size} (#{global_work_offset})"
+          event = $queue.enqueue_NDrange_kernel(kernel, global_work_size, local_work_size: local_work_size, global_work_offset: global_work_offset)
+          $queue.finish
+          p event
+          p "#{event.profiling_command_end - event.profiling_command_start} ns"
+          out_args = kernel.args.collect { |arg|
+            create_argument(enqueue_dir, arg, dir: :out)
+          }
+          args.zip(out_args).each { |input, output|
+            if input.kind_of?(Array)
+              p input[0]
+              $queue.enqueue_read_buffer(input[0], input[1], blocking: true)
+              if input[1].kind_of?(NArray)
+                error = (output - input[1]).abs.max
+                raise "Computation error!" if input[1].integer? and error != 0
+                puts "Max Error: #{error}."
+              else
+                puts "Match: #{output == input[1]}."
+              end
+            end
+          }
         }
       }
     }
