@@ -115,7 +115,7 @@ Dir::open(ARGV[0]) { |d|
       option_dir.lazy.reject { |e| e == ".." || e == "." }.select { |entry| Dir.exist?(File::join(option_dir.path,entry)) }.each { |ssubdir|
         kernel_dir = Dir::open(File::join(option_dir.path, ssubdir))
         kernel = program.create_kernel(ssubdir)
-        p kernel
+        puts kernel.name + ":"
         arguments = []
         kernel_dir.lazy.reject { |e| e == ".." || e == "." }.each { |sssubdir|
           enqueue_dir = Dir::open(File::join(kernel_dir.path, sssubdir))
@@ -123,35 +123,38 @@ Dir::open(ARGV[0]) { |d|
              create_argument(enqueue_dir, arg)
           }
           args.each_with_index { |a, i|
+            print "\t#{kernel.args[i].name}:"
             if a.kind_of?(Array)
-              p a[0]
+              puts " #{a[0].inspect}"
               kernel.set_arg(i, a[0])
             elsif a.kind_of?(Numeric)
+              puts " #{a}"
               kernel.set_arg(i, nil, a)
             else
-              p a
+              puts " #{a}"
               kernel.set_arg(i, a)
             end
           }
           global_work_offset, global_work_size, local_work_size = get_work_group_data(enqueue_dir)
-          puts "#{global_work_size} #{local_work_size} (#{global_work_offset})"
+          print "\t\tEnqueueNDRange: #{global_work_size} #{local_work_size}#{global_work_offset ? " (#{global_work_offset}" : "" }"
           event = $queue.enqueue_NDrange_kernel(kernel, global_work_size, local_work_size: local_work_size, global_work_offset: global_work_offset)
           $queue.finish
-          p event
-          p "#{event.profiling_command_end - event.profiling_command_start} ns"
+          puts " #{event.command_execution_status}"
+          puts "\t\ttiming: #{event.profiling_command_end - event.profiling_command_start} ns"
           out_args = kernel.args.collect { |arg|
             create_argument(enqueue_dir, arg, dir: :out)
           }
-          args.zip(out_args).each { |input, output|
+          args.zip(out_args).each_with_index { |(input, output), i|
             if input.kind_of?(Array)
+              print "\t#{kernel.args[i].name}: "
               p input[0]
               $queue.enqueue_read_buffer(input[0], input[1], blocking: true)
               if input[1].kind_of?(NArray)
                 error = (output - input[1]).abs.max
                 raise "Computation error!" if input[1].integer? and error != 0
-                puts "Max Error: #{error}."
+                puts "\t\tMax Error: #{error}."
               else
-                puts "Match: #{output == input[1]}."
+                puts "\t\tMatch: #{output == input[1]}."
               end
             end
           }
