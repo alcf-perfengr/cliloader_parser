@@ -3,8 +3,7 @@ class TestState < Minitest::Test
   def test_3D
     begin
     File::open("./3D/clintercept_log.txt", "r") { |f|
-      CLILoader::State::activate_states
-      CLILoader::Files::dir = "./3D/"
+      CLILoader::Files::activate("./3D/")
       objects, events = CLILoader::Parser.parse(f)
       assert_equal( 7, objects.size)
       assert_equal( 1527, events.size)
@@ -20,25 +19,24 @@ class TestState < Minitest::Test
             assert_equal( 14, o.state[:arg_files].length )
             assert_equal( 0, o.state[:arg_buff_files_in].length )
             assert_equal( 0, o.state[:arg_buff_files_out].length )
+            assert_equal( 0, o.state[:program_compile_number] )
           elsif o.kind_of? CLILoader::CL::Program
             assert o.state[:source]
             assert_nil o.state[:build_options]
-            assert_equal( 1, o.state[:compile_number] )
+            assert_equal( 1, o.state[:compile_count] )
           end
         }
       } 
     }
     ensure
-      CLILoader::State::deactivate_states
-      CLILoader::Files::dir = nil
+      CLILoader::Files::deactivate
     end
   end
 
   def test_lud
     begin
     File::open("./lud/clintercept_log.txt", "r") { |f|
-      CLILoader::State::activate_states
-      CLILoader::Files::dir = "./lud/"
+      CLILoader::Files::activate("./lud/")
       objects, events = CLILoader::Parser.parse(f)
       assert_equal( 7, objects.size)
       assert_equal( 1157, events.size)
@@ -47,14 +45,13 @@ class TestState < Minitest::Test
           if o.kind_of? CLILoader::CL::Program
             assert o.state[:source]
             assert o.state[:build_options]
-            assert_equal( 1, o.state[:compile_number] )
+            assert_equal( 1, o.state[:compile_count] )
           end
         }
       } 
     }
     ensure
-      CLILoader::State::deactivate_states
-      CLILoader::Files::dir = nil
+      CLILoader::Files::deactivate
     end
   end
 

@@ -1,32 +1,19 @@
 module CLILoader
 
   module State
+    extend Callbacks
 
-    STATE_CALLBACKS = Hash::new { |h, k| h[k] = [] }
+    register_callback(CLILoader::CL::SetKernelArg) { |event|
+      event.infos[:kernel].state[:args][event.infos[:index]] = event
+    }
 
-    STATE_CALLBACKS[CLILoader::CL::SetKernelArg].push(
-      lambda { |event|
-        if event.return_code == "CL_SUCCESS"
-          event.infos[:kernel].state[:args][event.infos[:index]] = event
-        end
-      }
-    )
+    register_callback(CLILoader::CL::CreateKernel) { |event|
+      event.returned.state[:program_compile_number] = event.infos[:program].state[:compile_count] - 1
+    }
 
-    def self.activate_states
-      STATE_CALLBACKS.each { |klass, callback_list|
-        callback_list.each { |callback|
-          klass.register_callback(callback)
-        }
-      }
-    end
-
-    def self.deactivate_states
-      STATE_CALLBACKS.each { |klass, callback_list|
-        callback_list.each { |callback|
-          klass.unregister_callback(callback)
-        }
-      }
-    end
+    register_callback(CLILoader::CL::BuildProgram) { |event|
+      event.infos[:program].state[:compile_count] += 1
+    }
 
   end
 

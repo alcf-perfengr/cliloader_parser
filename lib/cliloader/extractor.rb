@@ -4,6 +4,71 @@ require 'set'
 module CLILoader
 
   module Extractor
+    extend Callbacks
+
+    def self.activate(file_dir_path, dir_path)
+      @dir = dir_path
+      CLILoader::Files::activate(file_dir_path)
+      super()
+    end
+
+    def self.deactivate
+      @dir = nil
+      CLILoader::Files::deactivate
+      super
+    end
+
+    class << self
+      attr_accessor :dir
+    end
+
+    register_callback(CLILoader::CL::CreateProgramWithSource) { |event|
+      program = event.returned
+      program_number = event.infos[:"program number"]
+      path = File::join(dir, "%04d" % program_number)
+      Dir.mkdir(path) unless Dir.exist?(path)
+      FileUtils.cp program.state[:source], File.join(path, "source.cl")
+    }
+
+    register_callback(CLILoader::CL::BuildProgram) { |event|
+      program = event.infos[:program]
+      program_number = program.infos[:"program number"]
+      compile_number = program.state[:compile_count] - 1
+      path = File::join(dir, "%04d" % program_number, "%04d" % compile_number)
+      Dir.mkdir(path) unless Dir.exist?(path)
+      FileUtils.cp program.state[:build_options], File.join(path, "options.txt") if program.state[:build_options]
+    }
+
+    register_callback(CLILoader::CL::EnqueueNDRangeKernel) { |event|
+      kernel = event.infos[:kernel]
+      compile_number = kernel.state[:program_compile_number]
+      program_number = kernel.infos[:program].infos[:"program number"]
+      kernel_name = kernel.infos[:kernel_name]
+      kernel_path = File::join(dir, "%04d" % program_number, "%04d" % compile_number, kernel_name)
+      if kernel.state[:arg_buff_files_in].compact.length > 0
+        Dir.mkdir(kernel_path) unless Dir.exist?(kernel_path)
+        path = File::join(kernel_path, "%04d" % event.date)
+        Dir.mkdir(path) unless Dir.exist?(path)
+        save_kernel_work_data(path, event)
+        kernel.state[:args].each { |set_arg_event|
+          index = set_arg_event.infos[:index]
+          index_str = "%02d" % index
+          if set_arg_event.infos[:value].class < CLILoader::CL::Mem
+            FileUtils.cp kernel.state[:arg_buff_files_in][index], File.join(path, "#{index_str}.buffer.in")
+            FileUtils.cp kernel.state[:arg_buff_files_out][index], File.join(path, "#{index_str}.buffer.out")
+          else
+            file_path = File.join(path, "#{index_str}.in")
+            if kernel.state[:arg_files][index]
+              FileUtils.cp kernel.state[:arg_files][index], file_path
+            else
+              File.open( file_path,"wb") { |f|
+                f.write([set_arg_event.infos[:size]].pack("J"))
+              }
+            end
+          end
+        }
+      end
+    }
 
     def self.dump_kernel_work_data_info(dirpath, enqueue, info)
       if enqueue.infos[info]
@@ -16,76 +81,6 @@ module CLILoader
     def self.save_kernel_work_data(dirpath, enqueue)
       [:global_work_offset, :global_work_size, :local_work_size].each { |info|
         dump_kernel_work_data_info(dirpath, enqueue, info)
-      }
-    end
-
-    def self.save_kernel_data(dirpath, kernels, enqueues, set_args, buffer_inputs, buffer_outputs, arg_values)
-      kernels.each { |k|
-        kernel_dirpath = File.join(dirpath, k.infos[:kernel_name])
-        Dir::mkdir(kernel_dirpath) unless Dir.exist?(kernel_dirpath)
-        kernel_enqueues = enqueues.select { |enqueue| enqueue.infos[:kernel] == k }
-        kernel_enqueues.each { |enqueue|
-          enqueue_dirpath = File.join(kernel_dirpath, "%04d" % enqueue.date)
-          Dir::mkdir(enqueue_dirpath) unless Dir.exist?(enqueue_dirpath)
-          save_kernel_work_data(enqueue_dirpath, enqueue)
-          arg_set = Set::new
-          buffer_inputs.each do |file_name, (evt, arg_number)|
-            if evt == enqueue
-              FileUtils.cp file_name, File.join(enqueue_dirpath, "%02d.buffer.in" % arg_number)
-              arg_set.add arg_number
-            end
-          end
-          buffer_outputs.select do |file_name, (evt, arg_number)|
-            if evt == enqueue
-              FileUtils.cp file_name, File.join(enqueue_dirpath, "%02d.buffer.out" % arg_number)
-              arg_set.add arg_number
-            end
-          end
-          kernel_set_args = set_args.select { |evt| evt.infos[:kernel] == k }
-          arg_number_list = kernel_set_args.collect { |evt| evt.infos[:index] }.uniq
-          remaining_args = arg_number_list - arg_set.to_a
-          remaining_args.each { |index|
-            set_arg = kernel_set_args.find { |evt|
-              evt.date <= enqueue.date && evt.infos[:index] == index
-            }
-            file_name, _ = arg_values.find { |file_name, event_list| event_list.include?(set_arg) }
-            FileUtils.cp file_name, File.join(enqueue_dirpath, "%02d.in" % index)
-          }
-        }
-      }
-    end
-
-    def self.extract_kernels(dir, objects, events, program_sources, program_build_options, buffer_inputs, buffer_outputs, arg_values)
-      programs = []
-      objects.each { |k, obj_list|
-        obj_list.each { |obj|
-          programs.push obj if obj.kind_of? CLILoader::CL::Program
-        }
-      }
-      kernels = []
-      objects.each { |k, obj_list|
-        obj_list.each { |obj|
-          kernels.push obj if obj.kind_of? CLILoader::CL::Kernel
-        }
-      }
-
-      enqueues = buffer_inputs.collect { |k, (ev, arg_num)| ev }
-      enqueues += buffer_outputs.collect { |k, (ev, arg_num)| ev }
-      enqueues.uniq!
-      #reverse set_arg order
-      set_args = events.select { |e|
-        e.kind_of? CLILoader::CL::SetKernelArg
-      }.reverse
-       
-      programs.each { |p|
-        number = p.infos[:"program number"]
-        src = program_sources.find { |k, v| v.returned == p }
-        dirpath = File.join(dir.path, "%04d" % number)
-        Dir::mkdir(dirpath) unless Dir.exist?(dirpath)
-        FileUtils.cp src.first, File.join(dirpath, "source.cl")
-        prog_kernels = kernels.select { |k| k.infos[:program] == p }
-
-        save_kernel_data(dirpath, prog_kernels, enqueues, set_args, buffer_inputs, buffer_outputs, arg_values) 
       }
     end
 

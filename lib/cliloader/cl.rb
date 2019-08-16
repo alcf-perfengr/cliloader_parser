@@ -149,7 +149,7 @@ module CLILoader
       def initialize(*args)
         super
         @state[:source] = nil
-        @state[:compile_number] = 0
+        @state[:compile_count] = 0
         @state[:build_options] = nil
       end
     end
@@ -161,6 +161,7 @@ module CLILoader
         @state[:arg_files] = []
         @state[:arg_buff_files_in] = []
         @state[:arg_buff_files_out] = []
+        @state[:program_compile_number] = nil
       end
     end
 

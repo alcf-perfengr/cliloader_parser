@@ -3,6 +3,5 @@ require 'minitest/autorun'
 require 'cliloader'
 
 require_relative 'parser'
-require_relative 'files'
-require_relative 'extractor'
 require_relative 'state'
+require_relative 'extractor'
