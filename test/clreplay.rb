@@ -26,7 +26,7 @@ NARRAY_TYPE_MAP = {
   short: NArray::SINT,
   ushort: NArray::SINT,
   int: NArray::INT,
-  uint: NArray::SINT,
+  uint: NArray::INT,
   float: NArray::SFLOAT,
   double: NArray::FLOAT,
 }
